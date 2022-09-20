@@ -6,10 +6,19 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    enableFeaturePreview("VERSION_CATALOGS")
     repositories {
         google()
         mavenCentral()
+    }
+
+    versionCatalogs {
+        create("deps") {
+            from(files("../monie/gradle/deps.versions.toml"))
+        }
+        create("config") {
+            from(files("../monie/gradle/config.versions.toml"))
+        }
     }
 }
 rootProject.name = "monie"
