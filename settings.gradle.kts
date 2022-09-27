@@ -23,3 +23,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "monie"
 include("app")
+include("network")
