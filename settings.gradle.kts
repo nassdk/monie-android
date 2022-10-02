@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 rootProject.name = "monie"
 include("app")
 include("network")
+include(":common")
