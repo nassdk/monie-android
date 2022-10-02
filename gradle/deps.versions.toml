@@ -9,6 +9,8 @@ kotlinSerialization-jsonVersion = "1.4.0"
 kotlinSerialization-converterVersion = "0.8.0"
 
 # Libs
+fragment = "1.5.3"
+appCompat = "1.5.1"
 retrofitVersion = "2.9.0"
 okhttpVersion = "4.10.0"
 composeVersion = "1.2.1"
@@ -66,6 +68,12 @@ leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.re
 
 # Core KTX
 coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+
+# App compat
+appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
+
+# Fragment
+fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
 
 # Data
 dataStore = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStore" }
