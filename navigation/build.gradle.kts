@@ -7,9 +7,7 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
 configureAndroidOptions(false, false)
 
 dependencies {
-    implementation(dependencyNotation = deps.coreKtx)
-    implementation(dependencyNotation = deps.fragment)
+    implementation(dependencyNotation = deps.cicerone)
     implementation(dependencyNotation = deps.appCompat)
-    implementation(dependencyNotation = deps.compose.material)
-    implementation(dependencyNotation = deps.dagger)
+    implementation(dependencyNotation = deps.coreKtx)
 }

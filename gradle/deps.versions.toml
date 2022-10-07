@@ -16,7 +16,6 @@ okhttpVersion = "4.10.0"
 composeVersion = "1.2.1"
 compose_compilerVersion = "1.3.1"
 compose-activityVersion = "1.5.1"
-compose-navigationVersion = "2.5.2"
 compose-constraintlayout = "1.0.1"
 leakcanaryVersion = "2.8.1"
 daggerVersion = "2.44"
@@ -25,6 +24,7 @@ timberVersion = "5.0.1"
 coroutines-coreVersion = "1.6.4"
 coilVersion = "2.2.1"
 dataStore = "1.0.0"
+cicerone = "7.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradleVersion" }
@@ -52,7 +52,6 @@ compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeVersion"
 compose-material = { module = "androidx.compose.material:material", version.ref = "composeVersion" }
 compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeVersion" }
 constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "compose-constraintlayout" }
-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigationVersion" }
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activityVersion" }
 
 # Compose debug and test
@@ -80,6 +79,9 @@ dataStore = { module = "androidx.datastore:datastore-preferences", version.ref =
 
 # Timber
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timberVersion" }
+
+# Navigation
+cicerone = { module = "com.github.terrakok:cicerone", version.ref = "cicerone" }
 
 # Coroutines
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines-coreVersion" }
