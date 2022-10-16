@@ -7,6 +7,7 @@ pluginManagement {
 }
 dependencyResolutionManagement {
     enableFeaturePreview("VERSION_CATALOGS")
+    enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
     repositories {
         google()
         mavenCentral()
@@ -26,3 +27,4 @@ include("app")
 include("network")
 include(":common")
 include(":navigation")
+include(":ui")

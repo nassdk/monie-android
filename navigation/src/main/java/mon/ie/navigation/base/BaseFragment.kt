@@ -1,65 +1,44 @@
-package ru.kcenter.navigation.base
+package mon.ie.navigation.base
 
 import android.content.Context
-import android.os.Bundle
-import android.view.View
-import androidx.annotation.LayoutRes
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import ru.kcenter.navigation.TransitionType
-import ru.kcenter.navigation.router.RouterProvider
+import mon.ie.navigation.router.RouterProvider
 
-abstract class BaseFragment(@LayoutRes layoutResId: Int) : Fragment(layoutResId) {
+abstract class BaseFragment : Fragment() {
 
-    open val transitionType: TransitionType = TransitionType.HORIZONTAL
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
 
-    open fun showNavigationMenu(show: Boolean) {
-        (parentFragment as? BaseFragment)?.showNavigationMenu(show = show)
-    }
-
-    open fun switchNavigationTab(position: Int) {
-        (parentFragment as? BaseFragment)?.switchNavigationTab(position = position)
-    }
-
-    protected val tabRouter
-        get() = (parentFragment as? RouterProvider)?.router ?: (requireActivity() as RouterProvider).router
-
-    protected open fun setupInjection() = Unit
-    protected open fun setupUi() = Unit
-
-    override fun onAttach(context: Context) {
-        setupInjection()
-        super.onAttach(context)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setupInjection()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setupUi()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (isRealDestroy()) {
-            onFinalDestroy()
+    requireActivity().onBackPressedDispatcher.addCallback(
+      this,
+      object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+          if (isEnabled && onBackPressed()) {
+            isEnabled = false
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+          }
         }
-    }
+      }
+    )
+  }
 
-    abstract fun onBackPressed(): Boolean
+  open fun showNavigationMenu(show: Boolean) {
+    (parentFragment as? BaseFragment)?.showNavigationMenu(show = show)
+  }
 
-    open fun onFinalDestroy() = Unit
+  open fun switchNavigationTab(position: Int) {
+    (parentFragment as? BaseFragment)?.switchNavigationTab(position = position)
+  }
 
-    private fun isRealDestroy(): Boolean =
-        when {
-            activity?.isChangingConfigurations == true -> false
-            activity?.isFinishing == true -> true
-            else -> isRealRemoving()
-        }
+  protected val tabRouter
+    get() = (parentFragment as? RouterProvider)?.router ?: (requireActivity() as RouterProvider).router
 
-    private fun isRealRemoving(): Boolean {
-        return (isRemoving) ||
-            ((parentFragment as? BaseFragment)?.isRealRemoving() ?: false)
-    }
+  /**
+   * if returns true, onbackpressed will be dispatched,
+   * otherwise won't
+   */
+  protected open fun onBackPressed(): Boolean {
+    return true
+  }
 }
