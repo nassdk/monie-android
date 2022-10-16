@@ -1,8 +1,9 @@
-package ru.kcenter.navigation.router
+package mon.ie.navigation.router
 
 /**
- * Провайдер роутера для контейнер фрагмента. см [ru.kcenter.navigation.base.BaseContainerFragment]
+ * Route provider for container fragment.
+ * @see [mon.ie.navigation.base.BaseContainerFragment]
  */
 interface RouterProvider {
-    val router: KCRouter
+  val router: MonieRouter
 }

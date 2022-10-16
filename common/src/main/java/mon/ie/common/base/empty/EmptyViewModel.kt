@@ -9,6 +9,6 @@ class EmptyViewModel private constructor() : BaseViewModel<BaseScreenState, Base
     override val initialState = BaseScreenState.EMPTY
 
     internal companion object {
-        val EMPTY = EmptyViewModel()
+        val INSTANCE = EmptyViewModel()
     }
 }

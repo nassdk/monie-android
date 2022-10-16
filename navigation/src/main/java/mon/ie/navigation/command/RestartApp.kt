@@ -1,8 +1,5 @@
-package ru.kcenter.navigation.command
+package mon.ie.navigation.command
 
 import com.github.terrakok.cicerone.Command
 
-/**
- * Команда для перезапуска приложения
- */
 class RestartApp : Command

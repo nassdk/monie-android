@@ -1,9 +1,6 @@
-package ru.kcenter.navigation.command
+package mon.ie.navigation.command
 
 import com.github.terrakok.cicerone.Command
-import ru.kcenter.navigation.screen.DialogScreen
+import mon.ie.navigation.screen.DialogScreen
 
-/**
- * Команда для показа диалогов
- */
-data class ShowDialog(val screen: DialogScreen) : Command
+class ShowDialog(val screen: DialogScreen) : Command
