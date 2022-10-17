@@ -1,4 +1,4 @@
-package mon.ie.ui.theme
+package mon.ie.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.Shape
