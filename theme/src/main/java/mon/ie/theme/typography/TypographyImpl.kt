@@ -1,8 +1,8 @@
-package mon.ie.ui.theme.typography
+package mon.ie.theme.typography
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import mon.ie.ui.theme.textUnits
+import mon.ie.theme.textUnits
 
 internal val typography = MonieTypography(
   t24SemiBold = TextStyle(

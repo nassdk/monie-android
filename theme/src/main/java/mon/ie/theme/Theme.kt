@@ -1,9 +1,9 @@
-package mon.ie.ui.theme
+package mon.ie.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import mon.ie.ui.theme.color.currentPalette
-import mon.ie.ui.theme.typography.typography
+import mon.ie.theme.color.currentPalette
+import mon.ie.theme.typography.typography
 
 @Composable
 fun MonieTheme(

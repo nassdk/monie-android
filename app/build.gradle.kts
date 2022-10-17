@@ -50,7 +50,8 @@ android {
 }
 
 dependencies {
-  implementation(dependencyNotation = projects.ui)
+  implementation(dependencyNotation = projects.theme)
+  implementation(dependencyNotation = projects.uiKit)
   implementation(dependencyNotation = projects.common)
   implementation(dependencyNotation = projects.navigation)
 

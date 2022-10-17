@@ -1,4 +1,4 @@
-package mon.ie.ui.kit
+package mon.ie.uikit
 
 import android.view.View
 import androidx.compose.runtime.Composable

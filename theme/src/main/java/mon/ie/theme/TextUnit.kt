@@ -1,4 +1,4 @@
-package mon.ie.ui.theme
+package mon.ie.theme
 
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp

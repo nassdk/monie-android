@@ -1,10 +1,10 @@
-package mon.ie.ui.theme.typography
+package mon.ie.theme.typography
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import mon.ie.ui.R
+import mon.ie.theme.R
 
 internal val families = FontFamily(
   Font(resId = R.font.rubik_300, weight = FontWeight(weight = 300)),
