@@ -32,4 +32,5 @@ val Purple = Color(0xFF7662F5)
 val PurpleOpacity50 = Color(0x807662F5)
 val Gray9685FF = Color(0x009685FF)
 val Gray5D6A75 = Color(0x005D6A75)
+val GrayEBEDEE = Color(0x0EBEDEE)
 
