@@ -9,4 +9,5 @@ configureAndroidOptions(true, false)
 dependencies {
   implementation(projects.theme)
   implementation(deps.fragment)
+  implementation(deps.compose.activity)
 }
