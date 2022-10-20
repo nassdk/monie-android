@@ -1,4 +1,4 @@
-package mon.ie.uikit
+package mon.ie.uikit.helpers
 
 class ButtonPoint(
   val title: TextPoint,
