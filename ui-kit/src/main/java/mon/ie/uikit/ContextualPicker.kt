@@ -23,11 +23,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import mon.ie.theme.MonieTheme
-import mon.ie.uikit.helpers.ContextualPickerBundle
+import mon.ie.uikit.helpers.ActionSheetBundle
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ContextualPicker(bundle: ContextualPickerBundle) {
+fun ActionSheet(bundle: ActionSheetBundle) {
 
   val scope = rememberCoroutineScope()
 
