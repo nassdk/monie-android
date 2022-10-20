@@ -1,5 +1,6 @@
 package mon.ie.uikit
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -103,6 +104,15 @@ fun ActionSheet(bundle: ActionSheetBundle) {
     },
     content = {},
   )
+
+  BackHandler {
+    scope.launch {
+      bundle.onCancel.invoke()
+      scope.launch {
+        bundle.state.hide()
+      }
+    }
+  }
 }
 
 private fun calculateContextualShape(index: Int, lastIndex: Int): Shape {
