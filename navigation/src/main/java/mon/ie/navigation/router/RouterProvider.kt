@@ -5,5 +5,5 @@ package mon.ie.navigation.router
  * @see [mon.ie.navigation.base.BaseContainerFragment]
  */
 interface RouterProvider {
-  val router: MonieRouter
+    val router: MonieRouter
 }

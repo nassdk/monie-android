@@ -4,5 +4,5 @@ import mon.ie.common.base.empty.EmptyScreenState
 import mon.ie.common.base.empty.EmptyViewModel
 
 abstract class BaseScreen : BaseVmScreen<EmptyScreenState, BaseScreenEvent, BaseVmCommand>() {
-  override val viewModel = EmptyViewModel.INSTANCE
+    override val viewModel = EmptyViewModel.INSTANCE
 }

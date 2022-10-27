@@ -5,22 +5,22 @@ import androidx.compose.ui.graphics.Color
 //TODO to be updated by stable design system.
 
 class MonieColor internal constructor(
-  val background: MonieColorBackground,
-  val text: MonieColorText
+    val background: MonieColorBackground,
+    val text: MonieColorText
 )
 
 class MonieColorBackground internal constructor(
-  val primary: Color,
-  val secondary: Color,
-  val border: Color
+    val primary: Color,
+    val secondary: Color,
+    val border: Color
 )
 
 class MonieColorText internal constructor(
-  val primary: Color,
-  val secondary: Color,
-  val disabled: Color,
-  val red: Color,
-  val purple: Color
+    val primary: Color,
+    val secondary: Color,
+    val disabled: Color,
+    val red: Color,
+    val purple: Color
 )
 
 val White = Color(0xFFFFFFFF)

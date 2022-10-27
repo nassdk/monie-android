@@ -4,25 +4,25 @@ import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 import mon.ie.navigation.holder.LocalCiceroneHolder
 import mon.ie.navigation.router.MonieRouter
 import mon.ie.navigation.router.MonieRouterImpl
-import javax.inject.Singleton
 
 @Module
 object NavigationModule {
 
-  private val cicerone = Cicerone.create(MonieRouterImpl())
+    private val cicerone = Cicerone.create(MonieRouterImpl())
 
-  @Provides
-  @Singleton
-  fun provideRouter(): MonieRouter = cicerone.router
+    @Provides
+    @Singleton
+    fun provideRouter(): MonieRouter = cicerone.router
 
-  @Provides
-  @Singleton
-  fun provideNavigatorHolder(): NavigatorHolder = cicerone.getNavigatorHolder()
+    @Provides
+    @Singleton
+    fun provideNavigatorHolder(): NavigatorHolder = cicerone.getNavigatorHolder()
 
-  @Provides
-  @Singleton
-  fun provideCiceroneHolder() = LocalCiceroneHolder()
+    @Provides
+    @Singleton
+    fun provideCiceroneHolder() = LocalCiceroneHolder()
 }

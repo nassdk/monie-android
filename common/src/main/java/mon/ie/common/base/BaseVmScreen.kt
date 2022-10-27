@@ -20,53 +20,53 @@ import mon.ie.navigation.base.BaseFragment
  */
 
 abstract class BaseVmScreen<
-    STATE : BaseScreenState,
-    EVENT : BaseScreenEvent,
-    COMMAND : BaseVmCommand
-    > : BaseFragment() {
+        STATE : BaseScreenState,
+        EVENT : BaseScreenEvent,
+        COMMAND : BaseVmCommand
+        > : BaseFragment() {
 
-  abstract val viewModel: BaseViewModel<STATE, EVENT, COMMAND>
+    abstract val viewModel: BaseViewModel<STATE, EVENT, COMMAND>
 
-  @Composable
-  abstract fun ScreenContent(screenState: STATE)
+    @Composable
+    abstract fun ScreenContent(screenState: STATE)
 
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
-    setupInjection()
-  }
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    setupInjection()
-    super.onCreate(savedInstanceState)
-  }
-
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View = ComposeView(context = requireContext()).apply {
-
-    setViewCompositionStrategy(
-      ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-    )
-
-    setContent(
-      content = {
-        MaterialTheme(
-          content = { ScreenContent(screenState = viewModel.screenState.collectAsState().value) }
-        )
-      }
-    )
-  }
-
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-
-    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-      viewModel.commands.flowWithLifecycle(lifecycle = lifecycle).collect(::handleVmCommand)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        setupInjection()
     }
-  }
 
-  protected open fun setupInjection() = Unit
-  protected open fun handleVmCommand(command: COMMAND) = Unit
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setupInjection()
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = ComposeView(context = requireContext()).apply {
+
+        setViewCompositionStrategy(
+            ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+        )
+
+        setContent(
+            content = {
+                MaterialTheme(
+                    content = { ScreenContent(screenState = viewModel.screenState.collectAsState().value) }
+                )
+            }
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.commands.flowWithLifecycle(lifecycle = lifecycle).collect(::handleVmCommand)
+        }
+    }
+
+    protected open fun setupInjection() = Unit
+    protected open fun handleVmCommand(command: COMMAND) = Unit
 }

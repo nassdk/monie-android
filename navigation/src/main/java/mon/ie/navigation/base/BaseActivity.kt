@@ -10,70 +10,71 @@ import mon.ie.navigation.BuildConfig
 import mon.ie.navigation.router.RouterHandler
 import mon.ie.navigation.router.RouterProvider
 
-abstract class BaseActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layoutRes), RouterHandler, RouterProvider {
+abstract class BaseActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layoutRes),
+    RouterHandler, RouterProvider {
 
-  private var currentDialogTag: String? = null
+    private var currentDialogTag: String? = null
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    if (BuildConfig.DEBUG) {
-      setupStrictMode()
-    }
-  }
-
-  override fun showDialog(fragment: DialogFragment) {
-
-    val tag = buildString {
-      append(fragment::class.java.simpleName)
-      append(System.currentTimeMillis() / MILLIS_DIVIDER)
+        if (BuildConfig.DEBUG) {
+            setupStrictMode()
+        }
     }
 
-    currentDialogTag = tag
+    override fun showDialog(fragment: DialogFragment) {
 
-    fragment.show(supportFragmentManager, tag)
-  }
+        val tag = buildString {
+            append(fragment::class.java.simpleName)
+            append(System.currentTimeMillis() / MILLIS_DIVIDER)
+        }
 
-  override fun closeDialog() {
+        currentDialogTag = tag
 
-    currentDialogTag ?: return
-
-    val fragment = supportFragmentManager.findFragmentByTag(currentDialogTag) ?: run {
-      currentDialogTag = null
-      return
+        fragment.show(supportFragmentManager, tag)
     }
 
-    currentDialogTag = null
+    override fun closeDialog() {
 
-    if (fragment is DialogFragment) {
-      fragment.dismiss()
+        currentDialogTag ?: return
+
+        val fragment = supportFragmentManager.findFragmentByTag(currentDialogTag) ?: run {
+            currentDialogTag = null
+            return
+        }
+
+        currentDialogTag = null
+
+        if (fragment is DialogFragment) {
+            fragment.dismiss()
+        }
     }
-  }
 
-  private fun setupStrictMode() {
+    private fun setupStrictMode() {
 
-    supportFragmentManager.strictModePolicy = FragmentStrictMode.Policy.Builder()
-      .detectFragmentReuse()
-      .detectFragmentTagUsage()
-      .detectWrongFragmentContainer()
-      .penaltyDeath()
-      .build()
+        supportFragmentManager.strictModePolicy = FragmentStrictMode.Policy.Builder()
+            .detectFragmentReuse()
+            .detectFragmentTagUsage()
+            .detectWrongFragmentContainer()
+            .penaltyDeath()
+            .build()
 
-    StrictMode.setThreadPolicy(
-      StrictMode.ThreadPolicy.Builder()
-        .detectCustomSlowCalls()
-        .detectNetwork()
-        .penaltyDialog()
-        .build()
-    )
-  }
+        StrictMode.setThreadPolicy(
+            StrictMode.ThreadPolicy.Builder()
+                .detectCustomSlowCalls()
+                .detectNetwork()
+                .penaltyDialog()
+                .build()
+        )
+    }
 
-  override fun onDestroy() {
-    closeDialog()
-    super.onDestroy()
-  }
+    override fun onDestroy() {
+        closeDialog()
+        super.onDestroy()
+    }
 
-  private companion object {
-    private const val MILLIS_DIVIDER = 1234321
-  }
+    private companion object {
+        private const val MILLIS_DIVIDER = 1234321
+    }
 }
