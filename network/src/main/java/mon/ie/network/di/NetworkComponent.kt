@@ -1,9 +1,9 @@
 package mon.ie.network.di
 
 import dagger.Component
+import javax.inject.Scope
 import mon.ie.network.NetworkApi
 import mon.ie.network.NetworkApiImpl
-import javax.inject.Scope
 
 @Scope
 annotation class NetworkScope

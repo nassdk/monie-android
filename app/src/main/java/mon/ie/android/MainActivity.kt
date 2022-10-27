@@ -9,14 +9,14 @@ import androidx.fragment.app.FragmentActivity
 import mon.ie.ui.theme.MonieTheme
 
 class MainActivity : FragmentActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContent {
-      MonieTheme(isSystemDark = false) {
-        Column(modifier = Modifier.background(color = MonieTheme.colors.background.primary)) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MonieTheme(isSystemDark = false) {
+                Column(modifier = Modifier.background(color = MonieTheme.colors.background.primary)) {
 
+                }
+            }
         }
-      }
     }
-  }
 }

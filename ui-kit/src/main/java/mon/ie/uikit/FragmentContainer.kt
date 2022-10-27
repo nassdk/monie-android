@@ -13,36 +13,36 @@ import androidx.fragment.app.commit
 
 @Composable
 fun FragmentContainer(
-  modifier: Modifier = Modifier,
-  fragmentManager: FragmentManager,
-  commit: FragmentTransaction.(containerId: Int) -> Unit
+    modifier: Modifier = Modifier,
+    fragmentManager: FragmentManager,
+    commit: FragmentTransaction.(containerId: Int) -> Unit
 ) {
-  val containerId = rememberSaveable { mutableStateOf(View.generateViewId()) }
-  val initialized = rememberSaveable { mutableStateOf(false) }
+    val containerId = rememberSaveable { mutableStateOf(View.generateViewId()) }
+    val initialized = rememberSaveable { mutableStateOf(false) }
 
-  AndroidView(
-    modifier = modifier,
-    factory = { context ->
-      FragmentContainerView(context)
-        .apply { id = containerId.value }
-    },
-    update = { view ->
-      if (!initialized.value) {
-        fragmentManager.commit { commit(view.id) }
-        initialized.value = true
-      } else {
-        fragmentManager.onContainerAvailable(view)
-      }
-    }
-  )
+    AndroidView(
+        modifier = modifier,
+        factory = { context ->
+            FragmentContainerView(context)
+                .apply { id = containerId.value }
+        },
+        update = { view ->
+            if (!initialized.value) {
+                fragmentManager.commit { commit(view.id) }
+                initialized.value = true
+            } else {
+                fragmentManager.onContainerAvailable(view)
+            }
+        }
+    )
 }
 
 /** Access to package-private method in FragmentManager through reflection */
 private fun FragmentManager.onContainerAvailable(view: FragmentContainerView) {
-  val method = FragmentManager::class.java.getDeclaredMethod(
-    "onContainerAvailable",
-    FragmentContainerView::class.java
-  )
-  method.isAccessible = true
-  method.invoke(this, view)
+    val method = FragmentManager::class.java.getDeclaredMethod(
+        "onContainerAvailable",
+        FragmentContainerView::class.java
+    )
+    method.isAccessible = true
+    method.invoke(this, view)
 }

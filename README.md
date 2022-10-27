@@ -1,7 +1,5 @@
 # niegram/monie-android
 
-
-
 ## Getting Started
 
 Download links:
@@ -10,9 +8,8 @@ SSH clone URL: ssh://git@git.jetbrains.space/niegram/niegram/monie-android.git
 
 HTTPS clone URL: https://git.jetbrains.space/niegram/niegram/monie-android.git
 
-
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for
+development and testing purposes.
 
 ## Prerequisites
 

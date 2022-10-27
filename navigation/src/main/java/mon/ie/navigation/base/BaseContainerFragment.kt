@@ -14,59 +14,59 @@ import mon.ie.navigation.router.RouterProvider
 
 abstract class BaseContainerFragment(@LayoutRes layoutResId: Int) : BaseFragment(), RouterProvider {
 
-  override val router: MonieRouter
-    get() = cicerone.router
+    override val router: MonieRouter
+        get() = cicerone.router
 
-  private val navigator by lazy(LazyThreadSafetyMode.NONE) {
-    MonieNavigator(
-      navigatorActivity = requireActivity() as BaseActivity,
-      containerId = containerResId,
-      fragmentManager = childFragmentManager
-    )
-  }
-
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
-
-    if (BuildConfig.DEBUG) {
-      setupStrictMode()
+    private val navigator by lazy(LazyThreadSafetyMode.NONE) {
+        MonieNavigator(
+            navigatorActivity = requireActivity() as BaseActivity,
+            containerId = containerResId,
+            fragmentManager = childFragmentManager
+        )
     }
-  }
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
 
-    if (childFragmentManager.findFragmentById(containerResId) == null) {
-      executeTransactions()
+        if (BuildConfig.DEBUG) {
+            setupStrictMode()
+        }
     }
-  }
 
-  override fun onResume() {
-    super.onResume()
-    cicerone.getNavigatorHolder().setNavigator(navigator)
-  }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-  override fun onPause() {
-    cicerone.getNavigatorHolder().removeNavigator()
-    super.onPause()
-  }
+        if (childFragmentManager.findFragmentById(containerResId) == null) {
+            executeTransactions()
+        }
+    }
 
-  abstract val cicerone: Cicerone<MonieRouterImpl>
-  abstract val containerResId: Int
+    override fun onResume() {
+        super.onResume()
+        cicerone.getNavigatorHolder().setNavigator(navigator)
+    }
 
-  abstract fun executeTransactions()
+    override fun onPause() {
+        cicerone.getNavigatorHolder().removeNavigator()
+        super.onPause()
+    }
 
-  open fun resetStack() {
-    router.goBackTo(null)
-  }
+    abstract val cicerone: Cicerone<MonieRouterImpl>
+    abstract val containerResId: Int
 
-  private fun setupStrictMode() {
+    abstract fun executeTransactions()
 
-    childFragmentManager.strictModePolicy = FragmentStrictMode.Policy.Builder()
-      .penaltyDeath()
-      .detectFragmentReuse()
-      .detectFragmentTagUsage()
-      .detectWrongFragmentContainer()
-      .build()
-  }
+    open fun resetStack() {
+        router.goBackTo(null)
+    }
+
+    private fun setupStrictMode() {
+
+        childFragmentManager.strictModePolicy = FragmentStrictMode.Policy.Builder()
+            .penaltyDeath()
+            .detectFragmentReuse()
+            .detectFragmentTagUsage()
+            .detectWrongFragmentContainer()
+            .build()
+    }
 }

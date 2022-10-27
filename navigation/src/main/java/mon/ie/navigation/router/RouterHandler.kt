@@ -7,8 +7,8 @@ import androidx.fragment.app.DialogFragment
  * см. [mon.ie.navigation.base.BaseActivity]
  */
 interface RouterHandler {
-  fun switchNavTab(position: Int)
-  fun showDialog(fragment: DialogFragment)
-  fun showBottomScreen()
-  fun closeDialog()
+    fun switchNavTab(position: Int)
+    fun showDialog(fragment: DialogFragment)
+    fun showBottomScreen()
+    fun closeDialog()
 }

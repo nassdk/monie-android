@@ -10,18 +10,18 @@ import com.github.terrakok.cicerone.androidx.Creator
  */
 interface DialogScreen : Screen {
 
-  val clearContainer: Boolean get() = true
-  fun createFragment(factory: FragmentFactory): DialogFragment
+    val clearContainer: Boolean get() = true
+    fun createFragment(factory: FragmentFactory): DialogFragment
 
-  companion object {
-    operator fun invoke(
-      key: String? = null,
-      clearContainer: Boolean = true,
-      fragmentCreator: Creator<FragmentFactory, DialogFragment>,
-    ) = object : DialogScreen {
-      override val screenKey = key ?: fragmentCreator::class.java.name
-      override val clearContainer = clearContainer
-      override fun createFragment(factory: FragmentFactory) = fragmentCreator.create(factory)
+    companion object {
+        operator fun invoke(
+            key: String? = null,
+            clearContainer: Boolean = true,
+            fragmentCreator: Creator<FragmentFactory, DialogFragment>,
+        ) = object : DialogScreen {
+            override val screenKey = key ?: fragmentCreator::class.java.name
+            override val clearContainer = clearContainer
+            override fun createFragment(factory: FragmentFactory) = fragmentCreator.create(factory)
+        }
     }
-  }
 }

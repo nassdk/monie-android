@@ -20,29 +20,29 @@ import androidx.lifecycle.ViewModelStore
  */
 @MainThread
 inline fun <reified VM : ViewModel> Fragment.viewModels(
-  crossinline viewModelProducer: () -> VM,
+    crossinline viewModelProducer: () -> VM,
 ): Lazy<VM> {
-  return lazy(LazyThreadSafetyMode.NONE) {
-    createViewModel({ viewModelProducer() }, { this.viewModelStore })
-  }
+    return lazy(LazyThreadSafetyMode.NONE) {
+        createViewModel({ viewModelProducer() }, { this.viewModelStore })
+    }
 }
 
 @MainThread
 inline fun <reified VM : ViewModel> Fragment.createViewModel(
-  crossinline viewModelProducer: () -> VM,
-  crossinline storeProducer: () -> ViewModelStore,
+    crossinline viewModelProducer: () -> VM,
+    crossinline storeProducer: () -> ViewModelStore,
 ): VM {
-  return initViewModel(viewModelProducer, storeProducer)
+    return initViewModel(viewModelProducer, storeProducer)
 }
 
 inline fun <reified VM : ViewModel> initViewModel(
-  crossinline viewModelProducer: () -> VM,
-  crossinline storeProducer: () -> ViewModelStore,
+    crossinline viewModelProducer: () -> VM,
+    crossinline storeProducer: () -> ViewModelStore,
 ): VM {
-  val factory = object : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <VM : ViewModel> create(modelClass: Class<VM>) = viewModelProducer() as VM
-  }
-  val viewModelProvider = ViewModelProvider(storeProducer(), factory)
-  return viewModelProvider[VM::class.java]
+    val factory = object : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <VM : ViewModel> create(modelClass: Class<VM>) = viewModelProducer() as VM
+    }
+    val viewModelProvider = ViewModelProvider(storeProducer(), factory)
+    return viewModelProvider[VM::class.java]
 }

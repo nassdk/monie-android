@@ -7,15 +7,15 @@ import mon.ie.theme.typography.typography
 
 @Composable
 fun MonieTheme(
-  isSystemDark: Boolean,
-  content: @Composable () -> Unit
+    isSystemDark: Boolean,
+    content: @Composable () -> Unit
 ) {
-  CompositionLocalProvider(
-    LocalMonieColors provides currentPalette(isDark = isSystemDark),
-    LocalMonieDimens provides dimens,
-    LocalMonieShapes provides shapes,
-    LocalMonieTextUnits provides textUnits,
-    LocalMonieTypography provides typography,
-    content = content
-  )
+    CompositionLocalProvider(
+        LocalMonieColors provides currentPalette(isDark = isSystemDark),
+        LocalMonieDimens provides dimens,
+        LocalMonieShapes provides shapes,
+        LocalMonieTextUnits provides textUnits,
+        LocalMonieTypography provides typography,
+        content = content
+    )
 }

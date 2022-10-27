@@ -26,7 +26,10 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
             buildTypes {
                 getByName("release") {
                     isMinifyEnabled = false
-                    proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                    proguardFiles(
+                        getDefaultProguardFile("proguard-android-optimize.txt"),
+                        "proguard-rules.pro"
+                    )
                 }
             }
             compileOptions {
@@ -43,7 +46,8 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
             }
 
             if (withCompose) {
-                composeOptions.kotlinCompilerExtensionVersion = deps.versions.compose.compilerVersion.get()
+                composeOptions.kotlinCompilerExtensionVersion =
+                    deps.versions.compose.compilerVersion.get()
                 dependencies.addCompose()
             }
 
