@@ -8,8 +8,9 @@ import mon.ie.theme.MonieTheme
  * Button shapes
  */
 enum class MonieButtonShape(val value: @Composable () -> Shape) {
-  LARGE(value = { MonieTheme.shapes.mediumShape }),
-  SMALL(value = { MonieTheme.shapes.smallShape }),
-  TOPPED(value = { MonieTheme.shapes.toppedMedium }),
-  BOTTOMED(value = { MonieTheme.shapes.bottomedMedium })
+    LARGE(value = { MonieTheme.shapes.mediumShape }),
+    SMALL(value = { MonieTheme.shapes.smallShape }),
+    TOPPED(value = { MonieTheme.shapes.toppedMedium }),
+    BOTTOMED(value = { MonieTheme.shapes.bottomedMedium }),
+    NONE(value = { MonieTheme.shapes.empty })
 }

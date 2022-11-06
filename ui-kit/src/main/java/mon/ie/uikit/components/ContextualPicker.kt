@@ -2,19 +2,9 @@ package mon.ie.uikit.components
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -67,7 +57,7 @@ fun ActionSheet(bundle: ActionSheetBundle) {
                         )
                         Text(
                             text = button.title.value,
-                            color = button.title.color ?: MonieTheme.colors.text.primary,
+                            color = button.title.color.invoke(),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = MonieTheme.dimens.dp12),

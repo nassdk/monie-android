@@ -4,18 +4,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import mon.ie.theme.MonieTheme
 
-enum class MonieButtonStyle(
-  val backgroundColor: @Composable () -> Color,
-  val textColor: @Composable () -> Color
-) {
+enum class MonieButtonStyle(val backgroundColor: @Composable () -> Color) {
 
-  ACCENT(
-    backgroundColor = { MonieTheme.colors.background.purple },
-    textColor = { Color.White }
-  ),
+    ACCENT(
+        backgroundColor = { MonieTheme.colors.background.purple }
+    ),
 
-  SECONDARY(
-    backgroundColor = { MonieTheme.colors.background.secondary },
-    textColor = { MonieTheme.colors.text.primary }
-  )
+    SECONDARY(
+        backgroundColor = { MonieTheme.colors.background.secondary }
+    ),
+
+    NONE(
+        backgroundColor = { Color.Transparent }
+    ),
 }

@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -15,119 +13,114 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import mon.ie.theme.MonieTheme
-import mon.ie.uikit.helpers.AlertDialogBundle
+import mon.ie.uikit.components.buttons.MonieButton
+import mon.ie.uikit.helpers.alert.AlertDialogBuilder
+import mon.ie.uikit.helpers.alert.AlertDialogBuilderImpl
+import mon.ie.uikit.helpers.alert.AlertDialogItem
+import mon.ie.uikit.helpers.button.MonieButtonShape.BOTTOMED
+import mon.ie.uikit.helpers.button.MonieButtonShape.NONE
+import mon.ie.uikit.helpers.button.MonieButtonStyle
 
 @Composable
 fun MonieAlert(
-    bundle: AlertDialogBundle,
-    onDismissRequested: () -> Unit
+    onDismissRequested: () -> Unit,
+    builder: AlertDialogBuilder.() -> Unit,
+    properties: DialogProperties = DialogProperties(),
 ) {
+
+    val config = AlertDialogBuilderImpl().apply(builder).build()
 
     Dialog(
         onDismissRequest = onDismissRequested,
+        properties = properties,
         content = {
-
             Surface(
                 modifier = Modifier.blur(radius = 6.dp),
                 shape = MonieTheme.shapes.mediumShape,
                 content = {
-          Column(
-            content = {
-              Text(
-                modifier = Modifier
-                  .fillMaxWidth()
-                  .padding(
-                    top = MonieTheme.dimens.dp16,
-                    start = MonieTheme.dimens.dp24,
-                    end = MonieTheme.dimens.dp24
-                  ),
-                text = bundle.title.value,
-                style = MonieTheme.typography.h16Medium,
-                color = bundle.title.color ?: MonieTheme.colors.text.primary,
-                textAlign = TextAlign.Center
-              )
 
-                            Text(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = MonieTheme.dimens.dp4),
-                                text = bundle.title.value,
-                                style = MonieTheme.typography.b12Regular,
-                                color = bundle.title.color ?: MonieTheme.colors.text.secondary,
-                                textAlign = TextAlign.Center
-                            )
-
-                            if (bundle.confirmButton == null && bundle.cancelButton == null) {
-                                return@Column
+                    Column(
+                        content = {
+                            val firstButtonIndex = config.items.indexOfFirst {
+                                it is AlertDialogItem.Button
                             }
 
-                            Divider(
-                                color = MonieTheme.colors.background.border,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = MonieTheme.dimens.dp16),
-                            )
-
-                            if (bundle.confirmButton != null) {
-                                Button(
-                                    onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                        .height(height = 42.dp)
-                                        .fillMaxWidth(),
-                                    elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp),
-                                    colors = ButtonDefaults.buttonColors(
-                                        backgroundColor = MonieTheme.colors.background.primary
-                                    ),
-                                    content = {
-                                        Text(
-                                            modifier = Modifier.padding(
-                                                horizontal = MonieTheme.dimens.dp24
-                                            ),
-                                            color = bundle.confirmButton.title.color
-                                                ?: MonieTheme.colors.background.primary,
-                                            style = MonieTheme.typography.b14Medium,
-                                            text = bundle.confirmButton.title.value,
-                                            textAlign = TextAlign.Center,
-                                        )
-                                    }
-                                )
-                            }
-
-                            if (bundle.cancelButton != null) {
-
-                                Divider(
-                                    color = MonieTheme.colors.background.border,
-                                    modifier = Modifier.fillMaxWidth()
-                                )
-
-                                Button(
-                                    onClick = { /*TODO*/ },
-                                    modifier = Modifier
-                                        .height(height = 42.dp)
-                                        .fillMaxWidth(),
-                                    elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp),
-                                    colors = ButtonDefaults.buttonColors(
-                                        backgroundColor = MonieTheme.colors.background.primary
-                                    ),
-                                    content = {
-                                        Text(
-                                            style = MonieTheme.typography.b14Medium,
-                                            modifier = Modifier.padding(
-                                                horizontal = MonieTheme.dimens.dp24
-                                            ),
-                                            color = bundle.cancelButton.title.color
-                                                ?: MonieTheme.colors.text.primary,
-                                            text = bundle.cancelButton.title.value,
-                                            textAlign = TextAlign.Center,
-                                        )
-                                    }
-                                )
+                            config.items.forEachIndexed { index, item ->
+                                when (item) {
+                                    is AlertDialogItem.Title -> AlertTitle(model = item)
+                                    is AlertDialogItem.Subtitle -> AlertSubtitle(model = item)
+                                    is AlertDialogItem.Button -> AlertButton(
+                                        model = item,
+                                        firstItem = index == firstButtonIndex,
+                                        lastItem = index == config.items.lastIndex
+                                    )
+                                }
                             }
                         }
                     )
                 }
             )
+        }
+    )
+}
+
+@Composable
+private fun AlertTitle(model: AlertDialogItem.Title) {
+
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                top = MonieTheme.dimens.dp16,
+                start = MonieTheme.dimens.dp24,
+                end = MonieTheme.dimens.dp24
+            ),
+        text = model.node.value,
+        style = model.node.style.invoke(),
+        color = model.node.color.invoke(),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+private fun AlertSubtitle(model: AlertDialogItem.Subtitle) {
+
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = MonieTheme.dimens.dp4),
+        text = model.node.value,
+        style = model.node.style.invoke(),
+        color = model.node.color.invoke(),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+private fun AlertButton(
+    model: AlertDialogItem.Button,
+    firstItem: Boolean,
+    lastItem: Boolean
+) {
+
+    Divider(
+        color = MonieTheme.colors.background.border,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = if (firstItem) MonieTheme.dimens.dp16 else 0.dp),
+    )
+
+    MonieButton(
+        onClick = { /*TODO*/ },
+        shape = if (lastItem) BOTTOMED else NONE,
+        style = MonieButtonStyle.NONE,
+        modifier = Modifier
+            .height(height = 42.dp)
+            .fillMaxWidth(),
+        builder = {
+            withTitle(text = model.node.title)
         }
     )
 }
