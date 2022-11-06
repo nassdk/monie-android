@@ -1,5 +1,6 @@
+import mon.ie.uikit.helpers.nodes.TextNode
 
 class ButtonPoint(
-    val title: TextPoint,
+    val title: TextNode,
     val onClick: () -> Unit
 )
