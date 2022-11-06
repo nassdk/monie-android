@@ -1,20 +1,25 @@
 package mon.ie.uikit.components
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import mon.ie.theme.MonieTheme
+import mon.ie.uikit.components.buttons.MonieButton
 import mon.ie.uikit.helpers.ActionSheetBundle
+import mon.ie.uikit.helpers.button.MonieButtonShape
+import mon.ie.uikit.helpers.button.MonieButtonStyle
+import mon.ie.uikit.helpers.nodes.ButtonNode
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -30,40 +35,15 @@ fun ActionSheet(bundle: ActionSheetBundle) {
         sheetContentColor = Color.Transparent,
         sheetBackgroundColor = Color.Transparent,
         sheetContent = {
-
             bundle.content.forEachIndexed { index, button ->
-                Button(
+
+                ContextualButton(
                     onClick = {
-                        scope.launch {
-                            bundle.state.hide()
-                        }
-                        button.onClick.invoke()
+                        scope.launch { bundle.state.hide() }
                     },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MonieTheme.colors.background.primary),
-                    shape = calculateContextualShape(
-                        index = index,
-                        lastIndex = bundle.content.lastIndex
-                    ),
-                    modifier = Modifier
-                        .padding(horizontal = MonieTheme.dimens.dp16)
-                        .fillMaxWidth()
-                        .height(48.dp),
-                    content = {
-                        Box(
-                            modifier = Modifier
-                                .size(size = 24.dp)
-                                .background(color = MonieTheme.colors.background.secondary) //TODO Make it image
-                                .padding(start = MonieTheme.dimens.dp12),
-                        )
-                        Text(
-                            text = button.title.value,
-                            color = button.title.color.invoke(),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = MonieTheme.dimens.dp12),
-                            style = MonieTheme.typography.b14Regular,
-                        )
-                    }
+                    firstItem = index == 0,
+                    lastItem = index == bundle.content.lastIndex,
+                    button = button
                 )
 
                 if (index != bundle.content.lastIndex) {
@@ -76,22 +56,15 @@ fun ActionSheet(bundle: ActionSheetBundle) {
                 }
             }
 
-            Button(
+            MonieButton(
                 onClick = bundle.onCancel,
-                colors = ButtonDefaults.buttonColors(backgroundColor = MonieTheme.colors.background.primary),
-                shape = MonieTheme.shapes.mediumShape,
+                style = MonieButtonStyle.PRIMARY,
+                shape = MonieButtonShape.LARGE,
                 modifier = Modifier
                     .padding(all = MonieTheme.dimens.dp16)
-                    .fillMaxWidth()
-                    .height(44.dp),
-                content = {
-                    Text(
-                        text = "Cancel",
-                        color = MonieTheme.colors.text.primary,
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center,
-                        style = MonieTheme.typography.b14Medium
-                    )
+                    .fillMaxWidth(),
+                builder = {
+                    withTitle(text = "Cancel")
                 }
             )
         },
@@ -108,29 +81,36 @@ fun ActionSheet(bundle: ActionSheetBundle) {
     }
 }
 
-private fun calculateContextualShape(index: Int, lastIndex: Int): Shape {
-    return when (index) {
-        lastIndex -> {
-            RoundedCornerShape(
-                topEnd = 0.dp,
-                topStart = 0.dp,
-                bottomEnd = 12.dp,
-                bottomStart = 12.dp
-            )
-        }
+@Composable
+private fun ContextualButton(
+    onClick: () -> Unit,
+    firstItem: Boolean,
+    lastItem: Boolean,
+    button: ButtonNode
+) {
 
-        0 -> {
-            RoundedCornerShape(
-                topEnd = 12.dp,
-                topStart = 12.dp,
-                bottomEnd = 0.dp,
-                bottomStart = 0.dp
-            )
+    MonieButton(
+        onClick = {
+            button.onClick.invoke()
+            onClick.invoke()
+        },
+        style = MonieButtonStyle.PRIMARY,
+        shape = getShapeForButton(isLast = lastItem, isFirst = firstItem),
+        modifier = Modifier
+            .padding(horizontal = MonieTheme.dimens.dp16)
+            .fillMaxWidth(),
+        builder = {
+            withTitle(text = button.title)
         }
+    )
+}
 
-        else -> {
-            RoundedCornerShape(size = 0.dp)
-        }
+@Composable
+private fun getShapeForButton(isLast: Boolean, isFirst: Boolean): MonieButtonShape {
+    return when {
+        isLast -> MonieButtonShape.BOTTOMED
+        isFirst -> MonieButtonShape.TOPPED
+        else -> MonieButtonShape.NONE
     }
 }
 

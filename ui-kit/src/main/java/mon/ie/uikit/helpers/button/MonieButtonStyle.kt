@@ -10,6 +10,10 @@ enum class MonieButtonStyle(val backgroundColor: @Composable () -> Color) {
         backgroundColor = { MonieTheme.colors.background.purple }
     ),
 
+    PRIMARY(
+        backgroundColor = { MonieTheme.colors.background.primary }
+    ),
+
     SECONDARY(
         backgroundColor = { MonieTheme.colors.background.secondary }
     ),
