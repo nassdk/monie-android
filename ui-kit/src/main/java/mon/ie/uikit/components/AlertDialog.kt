@@ -1,4 +1,4 @@
-package mon.ie.uikit
+package mon.ie.uikit.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,23 +31,22 @@ fun MonieAlert(
             Surface(
                 modifier = Modifier.blur(radius = 6.dp),
                 shape = MonieTheme.shapes.mediumShape,
-                contentColor = MonieTheme.colors.background.primary,
                 content = {
-                    Column(
-                        content = {
-                            Text(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        top = MonieTheme.dimens.dp16,
-                                        start = MonieTheme.dimens.dp24,
-                                        end = MonieTheme.dimens.dp24
-                                    ),
-                                text = bundle.title.value,
-                                style = MonieTheme.typography.h16Medium,
-                                color = bundle.title.color ?: MonieTheme.colors.text.primary,
-                                textAlign = TextAlign.Center
-                            )
+          Column(
+            content = {
+              Text(
+                modifier = Modifier
+                  .fillMaxWidth()
+                  .padding(
+                    top = MonieTheme.dimens.dp16,
+                    start = MonieTheme.dimens.dp24,
+                    end = MonieTheme.dimens.dp24
+                  ),
+                text = bundle.title.value,
+                style = MonieTheme.typography.h16Medium,
+                color = bundle.title.color ?: MonieTheme.colors.text.primary,
+                textAlign = TextAlign.Center
+              )
 
                             Text(
                                 modifier = Modifier

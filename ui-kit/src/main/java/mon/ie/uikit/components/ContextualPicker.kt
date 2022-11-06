@@ -1,4 +1,4 @@
-package mon.ie.uikit
+package mon.ie.uikit.components
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
