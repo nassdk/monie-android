@@ -10,28 +10,30 @@ internal val DarkPalette = MonieColor(
     background = MonieColorBackground(
         primary = White,
         secondary = Gray5D6A75,
-        border = Gray9685FF
-    ),
-    text = MonieColorText(
-        primary = Black,
-        secondary = GrayADB4B9,
-        red = Red,
         purple = Purple,
-        disabled = PurpleOpacity50
-    )
+    border = Gray9685FF
+  ),
+  text = MonieColorText(
+    primary = Black,
+    secondary = GrayADB4B9,
+    red = Red,
+    purple = Purple,
+    disabled = PurpleOpacity50
+  )
 )
 
 internal val LightPalette = MonieColor(
     background = MonieColorBackground(
         primary = White,
         secondary = WhiteF5F6F7,
-        border = Gray9685FF
-    ),
-    text = MonieColorText(
-        primary = Black,
-        secondary = GrayADB4B9,
-        red = Red,
-        purple = Purple,
-        disabled = PurpleOpacity50
-    )
+        border = Gray9685FF,
+    purple = Purple
+  ),
+  text = MonieColorText(
+    primary = Black,
+    secondary = GrayADB4B9,
+    red = Red,
+    purple = Purple,
+    disabled = PurpleOpacity50
+  )
 )

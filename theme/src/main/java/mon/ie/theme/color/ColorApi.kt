@@ -12,7 +12,8 @@ class MonieColor internal constructor(
 class MonieColorBackground internal constructor(
     val primary: Color,
     val secondary: Color,
-    val border: Color
+    val purple: Color,
+  val border: Color
 )
 
 class MonieColorText internal constructor(
