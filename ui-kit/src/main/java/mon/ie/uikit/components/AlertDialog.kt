@@ -113,7 +113,7 @@ private fun AlertButton(
     )
 
     MonieButton(
-        onClick = { /*TODO*/ },
+        onClick = model.node.onClick,
         shape = if (lastItem) BOTTOMED else NONE,
         style = MonieButtonStyle.NONE,
         modifier = Modifier
