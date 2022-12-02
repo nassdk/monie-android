@@ -50,6 +50,9 @@ kotlin-serializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serializati
 # Compose
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeVersion" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "composeVersion" }
+compose-animation = { module = "androidx.compose.animation:animation", version.ref = "composeVersion" }
+compose-animation-core = { module = "androidx.compose.animation:animation-core", version.ref = "composeVersion" }
+compose-animation-graphics = { module = "androidx.compose.animation:animation-graphics", version.ref = "composeVersion" }
 compose-ui-toolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeVersion" }
 constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "compose-constraintlayout" }
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activityVersion" }

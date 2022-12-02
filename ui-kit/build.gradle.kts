@@ -10,4 +10,7 @@ dependencies {
     implementation(projects.theme)
     implementation(deps.fragment)
     implementation(deps.compose.activity)
+    implementation(deps.compose.animation)
+    implementation(deps.compose.animation.core)
+    implementation(deps.compose.animation.graphics)
 }
