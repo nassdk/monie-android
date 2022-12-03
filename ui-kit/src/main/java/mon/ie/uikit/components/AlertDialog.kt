@@ -14,7 +14,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import mon.ie.theme.MonieTheme
+import mon.ie.theme.MonieColors
+import mon.ie.theme.MonieDimens
+import mon.ie.theme.MonieShapes
 import mon.ie.uikit.components.buttons.MonieButton
 import mon.ie.uikit.helpers.alert.AlertDialogBuilder
 import mon.ie.uikit.helpers.alert.AlertDialogBuilderImpl
@@ -38,7 +40,7 @@ fun MonieAlert(
         content = {
             Surface(
                 modifier = Modifier.blur(radius = 6.dp),
-                shape = MonieTheme.shapes.mediumShape,
+                shape = MonieShapes.mediumShape,
                 content = {
 
                     Column(
@@ -73,9 +75,9 @@ private fun AlertTitle(model: AlertDialogItem.Title) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                top = MonieTheme.dimens.dp16,
-                start = MonieTheme.dimens.dp24,
-                end = MonieTheme.dimens.dp24
+                top = MonieDimens.dp16,
+                start = MonieDimens.dp24,
+                end = MonieDimens.dp24
             ),
         text = model.node.value,
         style = model.node.style.invoke(),
@@ -90,7 +92,7 @@ private fun AlertSubtitle(model: AlertDialogItem.Subtitle) {
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = MonieTheme.dimens.dp4),
+            .padding(top = MonieDimens.dp4),
         text = model.node.value,
         style = model.node.style.invoke(),
         color = model.node.color.invoke(),
@@ -106,10 +108,10 @@ private fun AlertButton(
 ) {
 
     Divider(
-        color = MonieTheme.colors.background.border,
+        color = MonieColors.background.border,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = if (firstItem) MonieTheme.dimens.dp16 else 0.dp),
+            .padding(top = if (firstItem) MonieDimens.dp16 else 0.dp),
     )
 
     MonieButton(

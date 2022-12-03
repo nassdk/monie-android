@@ -5,45 +5,42 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import mon.ie.theme.color.MonieColor
 import mon.ie.theme.typography.MonieTypography
 
-object MonieTheme {
+val MonieColors
+    @Composable
+    get() = LocalMonieColors.current
 
-    val colors: MonieColor
-        @Composable
-        get() = LocalMonieColors.current
+val MonieTypograhy
+    @Composable
+    get() = LocalMonieTypography.current
 
-    val typography: MonieTypography
-        @Composable
-        get() = LocalMonieTypography.current
+val MonieDimens
+    @Composable
+    get() = LocalMonieDimens.current
 
-    val dimens: MonieDimens
-        @Composable
-        get() = LocalMonieDimens.current
+val MonieShapes
+    @Composable
+    get() = LocalMonieShapes.current
 
-    val shapes: MonieShape
-        @Composable
-        get() = LocalMonieShapes.current
+val MonieTextUnits
+    @Composable
+    get() = LocalMonieTextUnits.current
 
-    val textUnits: MonieTextUnits
-        @Composable
-        get() = LocalMonieTextUnits.current
-}
-
-val LocalMonieColors = staticCompositionLocalOf<MonieColor> {
+internal val LocalMonieColors = staticCompositionLocalOf<MonieColor> {
     error("No colors provided")
 }
 
-val LocalMonieTypography = staticCompositionLocalOf<MonieTypography> {
+internal val LocalMonieTypography = staticCompositionLocalOf<MonieTypography> {
     error("No typography provided")
 }
 
-val LocalMonieDimens = staticCompositionLocalOf<MonieDimens> {
+internal val LocalMonieDimens = staticCompositionLocalOf<MonieDimen> {
     error("No dimens provided")
 }
 
-val LocalMonieShapes = staticCompositionLocalOf<MonieShape> {
+internal val LocalMonieShapes = staticCompositionLocalOf<MonieShape> {
     error("No shapes provided")
 }
 
-val LocalMonieTextUnits = staticCompositionLocalOf<MonieTextUnits> {
+internal val LocalMonieTextUnits = staticCompositionLocalOf<MonieTextUnit> {
     error("No text units provided")
 }
