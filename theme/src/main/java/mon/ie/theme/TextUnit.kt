@@ -3,7 +3,7 @@ package mon.ie.theme
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
-class MonieTextUnits internal constructor(
+class MonieTextUnit internal constructor(
     val sp12: TextUnit = 12.sp,
     val sp14: TextUnit = 14.sp,
     val sp16: TextUnit = 16.sp,
@@ -12,4 +12,4 @@ class MonieTextUnits internal constructor(
     val sp24: TextUnit = 24.sp
 )
 
-internal val textUnits = MonieTextUnits()
+internal val textUnits = MonieTextUnit()

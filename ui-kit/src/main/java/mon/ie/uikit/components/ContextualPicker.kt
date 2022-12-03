@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
-import mon.ie.theme.MonieTheme
+import mon.ie.theme.MonieDimens
 import mon.ie.uikit.components.buttons.MonieButton
 import mon.ie.uikit.helpers.ActionSheetBundle
 import mon.ie.uikit.helpers.button.MonieButtonShape
@@ -49,7 +49,7 @@ fun ActionSheet(bundle: ActionSheetBundle) {
                 if (index != bundle.content.lastIndex) {
                     Divider(
                         modifier = Modifier
-                            .padding(horizontal = MonieTheme.dimens.dp16)
+                            .padding(horizontal = MonieDimens.dp16)
                             .fillMaxWidth(),
                         color = Color(0xFFEBEDEE)
                     )
@@ -61,7 +61,7 @@ fun ActionSheet(bundle: ActionSheetBundle) {
                 style = MonieButtonStyle.PRIMARY,
                 shape = MonieButtonShape.LARGE,
                 modifier = Modifier
-                    .padding(all = MonieTheme.dimens.dp16)
+                    .padding(all = MonieDimens.dp16)
                     .fillMaxWidth(),
                 builder = {
                     withTitle(text = "Cancel")
@@ -97,7 +97,7 @@ private fun ContextualButton(
         style = MonieButtonStyle.PRIMARY,
         shape = getShapeForButton(isLast = lastItem, isFirst = firstItem),
         modifier = Modifier
-            .padding(horizontal = MonieTheme.dimens.dp16)
+            .padding(horizontal = MonieDimens.dp16)
             .fillMaxWidth(),
         builder = {
             withTitle(text = button.title)

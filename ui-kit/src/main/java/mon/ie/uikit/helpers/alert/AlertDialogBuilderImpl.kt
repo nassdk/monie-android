@@ -1,7 +1,7 @@
 package mon.ie.uikit.helpers.alert
 
 import androidx.compose.ui.graphics.Color
-import mon.ie.theme.MonieTheme
+import mon.ie.theme.MonieTypograhy
 import mon.ie.uikit.helpers.nodes.ButtonNode
 import mon.ie.uikit.helpers.nodes.TextNode
 
@@ -21,7 +21,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
             AlertDialogItem.Title(
                 node = TextNode(
                     value = value,
-                    style = { MonieTheme.typography.h16Medium }
+                    style = { MonieTypograhy.h16Medium }
                 )
             )
         )
@@ -34,7 +34,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
             AlertDialogItem.Subtitle(
                 node = TextNode(
                     value = value,
-                    style = { MonieTheme.typography.b12Regular }
+                    style = { MonieTypograhy.b12Regular }
                 )
             )
         )
@@ -44,7 +44,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
         items.add(
             AlertDialogItem.Button(
                 node = ButtonNode(
-                    title = TextNode(value = value, style = { MonieTheme.typography.b14Medium }),
+                    title = TextNode(value = value, style = { MonieTypograhy.b14Medium }),
                     onClick = onClick
                 )
             )
@@ -61,7 +61,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
                 node = ButtonNode(
                     title = TextNode(
                         value = value,
-                        style = { MonieTheme.typography.b14Medium },
+                        style = { MonieTypograhy.b14Medium },
                         color = color
                     ),
                     onClick = onClick

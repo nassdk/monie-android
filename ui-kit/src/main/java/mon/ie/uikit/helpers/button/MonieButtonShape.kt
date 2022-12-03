@@ -2,15 +2,15 @@ package mon.ie.uikit.helpers.button
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Shape
-import mon.ie.theme.MonieTheme
+import mon.ie.theme.MonieShapes
 
 /**
  * Button shapes
  */
 enum class MonieButtonShape(val value: @Composable () -> Shape) {
-    LARGE(value = { MonieTheme.shapes.mediumShape }),
-    SMALL(value = { MonieTheme.shapes.smallShape }),
-    TOPPED(value = { MonieTheme.shapes.toppedMedium }),
-    BOTTOMED(value = { MonieTheme.shapes.bottomedMedium }),
-    NONE(value = { MonieTheme.shapes.empty })
+    LARGE(value = { MonieShapes.mediumShape }),
+    SMALL(value = { MonieShapes.smallShape }),
+    TOPPED(value = { MonieShapes.toppedMedium }),
+    BOTTOMED(value = { MonieShapes.bottomedMedium }),
+    NONE(value = { MonieShapes.empty })
 }

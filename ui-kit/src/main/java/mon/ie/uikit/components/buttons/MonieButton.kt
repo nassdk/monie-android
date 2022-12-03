@@ -1,7 +1,14 @@
 package mon.ie.uikit.components.buttons
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -11,11 +18,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import mon.ie.theme.MonieTheme
-import mon.ie.uikit.helpers.button.*
-import mon.ie.uikit.helpers.button.MonieButtonItem.*
+import mon.ie.theme.MonieDimens
+import mon.ie.uikit.helpers.button.MonieButtonBuilder
+import mon.ie.uikit.helpers.button.MonieButtonBuilderImpl
+import mon.ie.uikit.helpers.button.MonieButtonColors
+import mon.ie.uikit.helpers.button.MonieButtonConfig
+import mon.ie.uikit.helpers.button.MonieButtonItem.EndIcon
+import mon.ie.uikit.helpers.button.MonieButtonItem.StartIcon
+import mon.ie.uikit.helpers.button.MonieButtonItem.Title
+import mon.ie.uikit.helpers.button.MonieButtonShape
+import mon.ie.uikit.helpers.button.MonieButtonSize
 import mon.ie.uikit.helpers.button.MonieButtonSize.LARGE
 import mon.ie.uikit.helpers.button.MonieButtonSize.SMALL
+import mon.ie.uikit.helpers.button.MonieButtonStyle
 import mon.ie.uikit.helpers.button.MonieButtonStyle.ACCENT
 import mon.ie.uikit.helpers.nodes.TextNode
 
@@ -90,8 +105,8 @@ internal fun RowScope.MakeTitle(
         maxLines = 1,
         modifier = Modifier
             .padding(
-                start = if (hasStartIcon) MonieTheme.dimens.dp12 else 0.dp,
-                end = if (hasEndIcon) MonieTheme.dimens.dp12 else 0.dp,
+                start = if (hasStartIcon) MonieDimens.dp12 else 0.dp,
+                end = if (hasEndIcon) MonieDimens.dp12 else 0.dp,
             )
             .then(calculateModifier(config = config, isSmall = isSmall))
     )

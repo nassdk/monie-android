@@ -3,7 +3,7 @@ package mon.ie.theme
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-class MonieDimens internal constructor(
+class MonieDimen internal constructor(
     val dp4: Dp = 4.dp,
     val dp8: Dp = 8.dp,
     val dp10: Dp = 10.dp,
@@ -14,4 +14,4 @@ class MonieDimens internal constructor(
     val dp28: Dp = 28.dp
 )
 
-internal val dimens = MonieDimens()
+internal val dimens = MonieDimen()
