@@ -1,3 +1,5 @@
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
 plugins {
     alias(deps.plugins.android.library) apply false
     alias(deps.plugins.android.application) apply false
@@ -48,7 +50,13 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
             if (withCompose) {
                 composeOptions.kotlinCompilerExtensionVersion =
                     deps.versions.compose.compilerVersion.get()
-                dependencies.addCompose()
+
+                with(dependencies) {
+                    val composePlatform = platform(deps.compose.bom)
+                    add("implementation", composePlatform)
+                    add("testImplementation", composePlatform)
+                    add("debugImplementation", deps.compose.ui.tooling)
+                }
             }
 
             buildFeatures.compose = withCompose
@@ -56,10 +64,3 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
         }
     }
 )
-
-fun DependencyHandler.addCompose() {
-    deps.bundles.compose.get().forEach { dep ->
-        add("implementation", dep)
-    }
-    add("debugImplementation", deps.compose.ui.tooling)
-}
