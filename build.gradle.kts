@@ -49,7 +49,7 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
 
             if (withCompose) {
                 composeOptions.kotlinCompilerExtensionVersion =
-                    deps.versions.compose.compilerVersion.get()
+                    deps.versions.composeCompilerVersion.get()
 
                 with(dependencies) {
                     val composePlatform = platform(deps.compose.bom)
