@@ -1,20 +1,12 @@
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
 plugins {
     alias(deps.plugins.android.library)
     alias(deps.plugins.kotlin.android)
 }
 
 val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by rootProject.extra
-configureAndroidOptions(false, false)
-
-android {
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = deps.versions.compose.compilerVersion.get()
-    }
-}
+configureAndroidOptions(true, false)
 
 dependencies {
     implementation(dependencyNotation = projects.navigation)
