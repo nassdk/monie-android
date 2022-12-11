@@ -68,6 +68,5 @@ dependencies {
     implementation(dependencyNotation = deps.compose.activity)
     implementation(dependencyNotation = deps.compose.navigation)
     implementation(dependencyNotation = deps.coreKtx)
-    implementation(dependencyNotation = deps.fragment)
     debugImplementation(dependencyNotation = deps.compose.ui.tooling)
 }

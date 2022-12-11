@@ -6,14 +6,6 @@ fun <T> List<T>.firstAndDo(block: (T) -> Unit) {
     }
 }
 
-inline fun <T> List<T>.indexOfFirstOrNull(predicate: (T) -> Boolean): Int? {
-    for ((index, item) in this.withIndex()) {
-        if (predicate(item))
-            return index
-    }
-    return null
-}
-
 fun <T> List<T>.indexOfFirstOrNull(element: T): Int? {
     for (index in indices) {
         if (element == this[index]) {
