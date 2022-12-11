@@ -11,8 +11,8 @@ configureAndroidOptions(true, false)
 dependencies {
     implementation(dependencyNotation = projects.navigation)
     implementation(dependencyNotation = deps.coreKtx)
-    implementation(dependencyNotation = deps.fragment)
     implementation(dependencyNotation = deps.appCompat)
     implementation(dependencyNotation = deps.compose.material)
     implementation(dependencyNotation = deps.dagger)
+    implementation(dependencyNotation = deps.lifecycle.viewmodelCompose)
 }
