@@ -15,10 +15,10 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("deps") {
-            from(files("../monie/gradle/deps.versions.toml"))
+            from(files("../monie-android/gradle/deps.versions.toml"))
         }
         create("config") {
-            from(files("../monie/gradle/config.versions.toml"))
+            from(files("../monie-android/gradle/config.versions.toml"))
         }
     }
 }
