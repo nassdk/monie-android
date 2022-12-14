@@ -26,6 +26,9 @@ coroutines-coreVersion = "1.6.4"
 coilVersion = "2.2.1"
 dataStore = "1.0.0"
 cicerone = "7.1"
+protobuf = "3.21.11"
+grpcJava = "1.51.0"
+grpcKotlin = "1.2.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradleVersion" }
@@ -34,6 +37,7 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" 
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
 kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlinVersion" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
+protobuf = "com.google.protobuf:0.9.1"
 
 [libraries]
 # Build
@@ -93,6 +97,13 @@ cicerone = { module = "com.github.terrakok:cicerone", version.ref = "cicerone" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines-coreVersion" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-coreVersion" }
 
+# gRPS
+android-grpc-protobufLite = { module = "io.grpc:grpc-protobuf-lite", version.ref = "grpcJava" }
+android-grpc-okhttp = { module = "io.grpc:grpc-okhttp", version.ref = "grpcJava" }
+android-grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpcJava" }
+android-grpc-kotlinStub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpcKotlin" }
+android-protobufLite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobuf" }
+
 # Sequrity and Crypto
 #security-crypto = { module = "androidx.security:security-crypto", version.ref = "security-crypto_version"}
 #tink = { module = "com.google.crypto.tink:tink-android", version.ref = "tink_version"}
@@ -114,4 +125,11 @@ compose-animationpack = [
     "compose-animation",
     "compose-animation-core",
     "compose-animation-graphics"
+]
+
+grps = [
+    "android-grpc-protobufLite",
+    "android-protobufLite",
+    "android-grpc-kotlinStub",
+    "android-grpc-stub"
 ]
