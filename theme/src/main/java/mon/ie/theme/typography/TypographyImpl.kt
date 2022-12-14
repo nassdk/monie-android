@@ -5,69 +5,70 @@ import androidx.compose.ui.text.font.FontWeight
 import mon.ie.theme.textUnits
 
 internal val typography = MonieTypography(
-    t24SemiBold = TextStyle(
-        fontSize = textUnits.sp24,
-        fontFamily = families,
-        fontWeight = FontWeight.SemiBold
-    ),
-    t20SemiBold = TextStyle(
+    title = TextStyle(
         fontSize = textUnits.sp20,
         fontFamily = families,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = textUnits.sp24
     ),
-    h20Medium = TextStyle(
+    headline = TextStyle(
         fontSize = textUnits.sp20,
         fontFamily = families,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Medium,
+        lineHeight = textUnits.sp20
     ),
-    h16Medium = TextStyle(
+    body1 = TextStyle(
         fontSize = textUnits.sp16,
         fontFamily = families,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Normal,
+        lineHeight = textUnits.sp20
     ),
-    b20Regular = TextStyle(
-        fontSize = textUnits.sp20,
-        fontFamily = families,
-        fontWeight = FontWeight.Normal
-    ),
-    b18Regular = TextStyle(
-        fontSize = textUnits.sp18,
-        fontFamily = families,
-        fontWeight = FontWeight.Normal
-    ),
-    b16Regular = TextStyle(
-        fontSize = textUnits.sp16,
-        fontFamily = families,
-        fontWeight = FontWeight.Normal
-    ),
-    b14Regular = TextStyle(
+    body2 = TextStyle(
         fontSize = textUnits.sp14,
         fontFamily = families,
-        fontWeight = FontWeight.Normal
+        fontWeight = FontWeight.Medium,
+        lineHeight = textUnits.sp18
     ),
-    b12Regular = TextStyle(
-        fontSize = textUnits.sp12,
-        fontFamily = families,
-        fontWeight = FontWeight.Normal
-    ),
-    b18Medium = TextStyle(
-        fontSize = textUnits.sp18,
-        fontFamily = families,
-        fontWeight = FontWeight.Medium
-    ),
-    b16Medium = TextStyle(
-        fontSize = textUnits.sp16,
-        fontFamily = families,
-        fontWeight = FontWeight.Medium
-    ),
-    b14Medium = TextStyle(
+    body3 = TextStyle(
         fontSize = textUnits.sp14,
         fontFamily = families,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Normal,
+        lineHeight = textUnits.sp18
     ),
-    b12Medium = TextStyle(
+    body4 = TextStyle(
         fontSize = textUnits.sp12,
         fontFamily = families,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Medium,
+        lineHeight = textUnits.sp16
+    ),
+    body5 = TextStyle(
+        fontSize = textUnits.sp12,
+        fontFamily = families,
+        fontWeight = FontWeight.Normal,
+        lineHeight = textUnits.sp16
+    ),
+    button1 = TextStyle(
+        fontSize = textUnits.sp14,
+        fontFamily = families,
+        fontWeight = FontWeight.Normal,
+        lineHeight = textUnits.sp18
+    ),
+    button2 = TextStyle(
+        fontSize = textUnits.sp12,
+        fontFamily = families,
+        fontWeight = FontWeight.Normal,
+        lineHeight = textUnits.sp16
+    ),
+    textField = TextStyle(
+        fontSize = textUnits.sp14,
+        fontFamily = families,
+        fontWeight = FontWeight.Medium,
+        lineHeight = textUnits.sp18
+    ),
+    caption = TextStyle(
+        fontSize = textUnits.sp10,
+        fontFamily = families,
+        fontWeight = FontWeight.Medium,
+        lineHeight = textUnits.sp14
     )
 )

@@ -17,17 +17,15 @@ internal val families = FontFamily(
 )
 
 class MonieTypography internal constructor(
-    val t24SemiBold: TextStyle,
-    val t20SemiBold: TextStyle,
-    val h20Medium: TextStyle,
-    val h16Medium: TextStyle,
-    val b20Regular: TextStyle,
-    val b18Regular: TextStyle,
-    val b16Regular: TextStyle,
-    val b14Regular: TextStyle,
-    val b12Regular: TextStyle,
-    val b18Medium: TextStyle,
-    val b16Medium: TextStyle,
-    val b14Medium: TextStyle,
-    val b12Medium: TextStyle
+    val title: TextStyle,
+    val headline: TextStyle,
+    val body1: TextStyle,
+    val body2: TextStyle,
+    val body3: TextStyle,
+    val body4: TextStyle,
+    val body5: TextStyle,
+    val button1: TextStyle,
+    val button2: TextStyle,
+    val textField: TextStyle,
+    val caption: TextStyle
 )

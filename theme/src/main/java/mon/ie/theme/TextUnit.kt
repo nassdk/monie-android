@@ -4,6 +4,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
 class MonieTextUnit internal constructor(
+    val sp10: TextUnit = 10.sp,
     val sp12: TextUnit = 12.sp,
     val sp14: TextUnit = 14.sp,
     val sp16: TextUnit = 16.sp,

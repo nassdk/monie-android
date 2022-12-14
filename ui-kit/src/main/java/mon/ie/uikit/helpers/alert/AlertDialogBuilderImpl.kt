@@ -21,7 +21,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
             AlertDialogItem.Title(
                 node = TextNode(
                     value = value,
-                    style = { MonieTypograhy.h16Medium }
+                    style = { MonieTypograhy.body2 }
                 )
             )
         )
@@ -34,7 +34,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
             AlertDialogItem.Subtitle(
                 node = TextNode(
                     value = value,
-                    style = { MonieTypograhy.b12Regular }
+                    style = { MonieTypograhy.button2 }
                 )
             )
         )
@@ -44,7 +44,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
         items.add(
             AlertDialogItem.Button(
                 node = ButtonNode(
-                    title = TextNode(value = value, style = { MonieTypograhy.b14Medium }),
+                    title = TextNode(value = value, style = { MonieTypograhy.button1 }),
                     onClick = onClick
                 )
             )
@@ -61,7 +61,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
                 node = ButtonNode(
                     title = TextNode(
                         value = value,
-                        style = { MonieTypograhy.b14Medium },
+                        style = { MonieTypograhy.button1 },
                         color = color
                     ),
                     onClick = onClick

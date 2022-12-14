@@ -31,13 +31,13 @@ data class TextNode internal constructor(
     constructor(value: String) : this(
         value = value,
         color = { MonieColors.text.primary },
-        style = { MonieTypograhy.b14Regular }
+        style = { MonieTypograhy.button1 }
     )
 
     constructor(value: String, color: Color) : this(
         value = value,
         color = { color },
-        style = { MonieTypograhy.b14Regular }
+        style = { MonieTypograhy.button1 }
     )
 
     constructor(value: String, style: TextStyle) : this(
