@@ -21,6 +21,7 @@ timberVersion = "5.0.1"
 coroutines-coreVersion = "1.6.4"
 coilVersion = "2.2.1"
 dataStore = "1.0.0"
+detekt = "1.22.0"
 protobuf = "3.21.11"
 grpcJava = "1.51.0"
 grpcKotlin = "1.2.1"
@@ -32,6 +33,7 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" 
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
 kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlinVersion" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 protobuf = "com.google.protobuf:0.9.1"
 
 [libraries]

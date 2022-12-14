@@ -6,6 +6,7 @@ plugins {
     alias(deps.plugins.kotlin.android) apply false
     alias(deps.plugins.kotlin.kapt) apply false
     alias(deps.plugins.kotlin.serialization) apply false
+    alias(deps.plugins.detekt)
 }
 
 val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by extra(
@@ -64,3 +65,45 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
         }
     }
 )
+
+detekt {
+    config = files("${projectDir}/config/detekt/detekt.yml")
+    allRules = false
+    buildUponDefaultConfig = true
+    parallel = true
+    ignoreFailures = false
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    source = fileTree(projectDir)
+    config.setFrom(files("${projectDir}/config/detekt/detekt.yml"))
+    include("**/*.kt")
+    exclude("**/resources/**", "**/build/**")
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+        txt.required.set(true)
+        sarif.required.set(true)
+        md.required.set(true)
+    }
+}
+
+tasks.register<Copy>("copyGitHooks") {
+    from("${rootDir}/config/githooks/") {
+        include("**/*.sh")
+        rename("(.*).sh", "$1")
+    }
+    into("${rootDir}/.git/hooks")
+}
+
+tasks.register<Exec>("installGitHooks") {
+    group = "git hooks"
+    workingDir = rootDir
+    commandLine("chmod")
+    args("-R", "+x", ".git/hooks/")
+    dependsOn(getTasksByName("copyGitHooks", true))
+    doLast {
+        println("Git hook installed successfully.")
+    }
+}

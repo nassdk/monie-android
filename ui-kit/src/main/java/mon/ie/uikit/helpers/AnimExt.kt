@@ -3,8 +3,6 @@ package mon.ie.uikit.helpers
 import android.os.SystemClock
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.CubicBezierEasing
-import androidx.compose.animation.core.Easing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
@@ -22,6 +20,7 @@ import kotlinx.coroutines.launch
 
 private const val PRESS_ANIMATION_MIN_TIME = 150
 
+@Suppress("MagicNumber")
 fun Modifier.animatedOnClick(
     interactionSource: InteractionSource,
     scaleDownFactor: Float
@@ -46,8 +45,6 @@ fun Modifier.animatedOnClick(
 
     scale(animatable.value)
 }
-
-val FastOutFastInEasing: Easing = CubicBezierEasing(0.4f, 0.0f, 0.6f, 1.0f)
 
 private val animatedBackgroundColorOnClickAnimationSpec = spring<Color>(
     dampingRatio = Spring.DampingRatioMediumBouncy,

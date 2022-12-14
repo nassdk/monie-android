@@ -8,7 +8,7 @@ import mon.ie.uikit.helpers.nodes.TextNode
 class AlertDialogBuilderImpl : AlertDialogBuilder {
 
     private val items by lazy(LazyThreadSafetyMode.NONE) {
-        ArrayList<AlertDialogItem>(4)
+        ArrayList<AlertDialogItem>(MAX_ALERT_ITEMS_SIZE)
     }
 
     private val hasTitle
@@ -72,5 +72,9 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
 
     override fun build(): AlertDialogConfig {
         return AlertDialogConfig(items = items)
+    }
+
+    private companion object {
+        const val MAX_ALERT_ITEMS_SIZE = 4
     }
 }

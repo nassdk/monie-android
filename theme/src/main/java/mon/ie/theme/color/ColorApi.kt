@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package mon.ie.theme.color
 
 import androidx.compose.ui.graphics.Color
@@ -13,7 +15,8 @@ class MonieColorBackground internal constructor(
     val primary: Color,
     val secondary: Color,
     val purple: Color,
-  val border: Color
+    val border: Color,
+    val darkTransaprent: Color
 )
 
 class MonieColorText internal constructor(

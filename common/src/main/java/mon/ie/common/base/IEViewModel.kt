@@ -19,7 +19,7 @@ abstract class IEViewModel<STATE : IEState, INTENT : IEIntent, SIDEEFFECT : IESi
 
     protected abstract val initialState: STATE
 
-    protected val _screenState by lazy {
+    protected val screenStateMutable by lazy {
         MutableStateFlow(initialState)
     }
 
@@ -41,7 +41,7 @@ abstract class IEViewModel<STATE : IEState, INTENT : IEIntent, SIDEEFFECT : IESi
         get() = sideEffectMutableFlow
 
     val screenState: StateFlow<STATE>
-        get() = _screenState
+        get() = screenStateMutable
 
     fun intent(intent: INTENT) {
         intentsMutableFlow.tryEmit(

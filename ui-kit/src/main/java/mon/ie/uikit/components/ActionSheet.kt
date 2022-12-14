@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import mon.ie.theme.MonieColors
 import mon.ie.theme.MonieDimens
 import mon.ie.uikit.components.buttons.MonieButton
 import mon.ie.uikit.helpers.ActionSheetBundle
@@ -51,7 +52,7 @@ fun ActionSheet(bundle: ActionSheetBundle) {
                         modifier = Modifier
                             .padding(horizontal = MonieDimens.dp16)
                             .fillMaxWidth(),
-                        color = Color(0xFFEBEDEE)
+                        color = MonieColors.background.darkTransaprent
                     )
                 }
             }
