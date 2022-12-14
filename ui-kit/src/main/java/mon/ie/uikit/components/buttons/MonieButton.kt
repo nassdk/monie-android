@@ -43,6 +43,7 @@ fun MonieButton(
     size: MonieButtonSize = LARGE,
     shape: MonieButtonShape = MonieButtonShape.LARGE,
     style: MonieButtonStyle = ACCENT,
+    withClickAnimation: Boolean = true,
     builder: MonieButtonBuilder.() -> Unit
 ) {
     val config = MonieButtonBuilderImpl().apply(builder).build()
@@ -53,6 +54,7 @@ fun MonieButton(
         enabled = isEnabled && !isLoading,
         shape = shape,
         colors = MonieButtonColors(backgroundColor = style.backgroundColor.invoke()),
+        withClickAnimation = withClickAnimation,
         content = {
             if (isLoading) {
                 LoadingProgress(size = size.progressIndicatorSize.invoke())

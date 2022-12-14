@@ -99,6 +99,7 @@ private fun ContextualButton(
         modifier = Modifier
             .padding(horizontal = MonieDimens.dp16)
             .fillMaxWidth(),
+        withClickAnimation = false,
         builder = {
             withTitle(text = button.title)
         }

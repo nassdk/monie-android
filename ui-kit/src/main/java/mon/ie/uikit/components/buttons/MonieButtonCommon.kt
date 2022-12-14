@@ -32,6 +32,7 @@ fun MonieButtonCommon(
     shape: MonieButtonShape = LARGE,
     enabled: Boolean = true,
     colors: MonieButtonColors,
+    withClickAnimation: Boolean,
     content: @Composable RowScope.() -> Unit
 ) {
 
@@ -40,9 +41,15 @@ fun MonieButtonCommon(
 
     Surface(
         onClick = onClick,
-        modifier = modifier.animatedOnClick(
-            interactionSource = interactionSource,
-            scaleDownFactor = BUTTON_CLICK_SCALE_FACTORY
+        modifier = modifier.then(
+            if (withClickAnimation) {
+                Modifier.animatedOnClick(
+                    interactionSource = interactionSource,
+                    scaleDownFactor = BUTTON_CLICK_SCALE_FACTORY
+                )
+            } else {
+                Modifier
+            }
         ),
         enabled = enabled,
         shape = shape.value.invoke(),
