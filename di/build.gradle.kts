@@ -6,9 +6,9 @@ plugins {
 }
 
 val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by rootProject.extra
-configureAndroidOptions(true, false)
+configureAndroidOptions(false, false)
 
 dependencies {
+    implementation(dependencyNotation = deps.dagger)
     implementation(dependencyNotation = deps.compose.navigation)
-    implementation(dependencyNotation = deps.bundles.compose.basepack)
 }

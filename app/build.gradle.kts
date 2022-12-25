@@ -63,6 +63,10 @@ dependencies {
     implementation(dependencyNotation = projects.uiKit)
     implementation(dependencyNotation = projects.common)
     implementation(dependencyNotation = projects.navigation)
+    implementation(dependencyNotation = projects.di)
+
+    implementation(dependencyNotation = projects.splash)
+    implementation(dependencyNotation = projects.auth)
 
     implementation(dependencyNotation = deps.bundles.compose.basepack)
     implementation(dependencyNotation = deps.compose.activity)
