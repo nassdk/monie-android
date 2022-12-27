@@ -50,25 +50,25 @@ internal val typography = MonieTypography(
     button1 = TextStyle(
         fontSize = textUnits.sp14,
         fontFamily = families,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         lineHeight = textUnits.sp18
     ),
     button2 = TextStyle(
         fontSize = textUnits.sp12,
         fontFamily = families,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         lineHeight = textUnits.sp16
     ),
-    textField = TextStyle(
+    label1 = TextStyle(
         fontSize = textUnits.sp14,
         fontFamily = families,
-        fontWeight = FontWeight.Medium,
+        fontWeight = FontWeight.Normal,
         lineHeight = textUnits.sp18
     ),
-    caption = TextStyle(
+    label2 = TextStyle(
         fontSize = textUnits.sp10,
         fontFamily = families,
-        fontWeight = FontWeight.Medium,
+        fontWeight = FontWeight.Normal,
         lineHeight = textUnits.sp14
     )
 )

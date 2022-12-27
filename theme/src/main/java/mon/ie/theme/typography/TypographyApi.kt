@@ -26,6 +26,6 @@ class MonieTypography internal constructor(
     val body5: TextStyle,
     val button1: TextStyle,
     val button2: TextStyle,
-    val textField: TextStyle,
-    val caption: TextStyle
+    val label1: TextStyle,
+    val label2: TextStyle
 )

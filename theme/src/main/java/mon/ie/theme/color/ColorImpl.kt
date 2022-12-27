@@ -1,41 +1,42 @@
 package mon.ie.theme.color
 
-//TODO to be updated by stable design system.
-
 internal fun currentPalette(isDark: Boolean): MonieColor {
     return if (isDark) DarkPalette else LightPalette
 }
 
-internal val DarkPalette = MonieColor(
-    background = MonieColorBackground(
-        primary = White,
-        secondary = Gray5D6A75,
-        purple = Purple,
-        border = Gray9685FF,
-        darkTransaprent = GrayEBEDEE
+internal val LightPalette = MonieColor(
+    background = White,
+    separator = WhiteEBEDEE,
+    text = MonieTextColor(
+        primary = Black011627,
+        secondary = Gray5C6A75
     ),
-    text = MonieColorText(
-        primary = Black,
-        secondary = GrayADB4B9,
-        red = Red,
-        purple = Purple,
-        disabled = PurpleOpacity50
+    interactive = MonieInteractiveColor(
+        primary = Purple,
+        secondary = WhiteF5F6F7,
+        tertiary = Black1F3241,
+        gradient = Purple71569C to Purple7662F6
+    ),
+    default = MonieDefaultColor(
+        red = Red
     )
 )
 
-internal val LightPalette = MonieColor(
-    background = MonieColorBackground(
+
+internal val DarkPalette = MonieColor(
+    background = Black,
+    separator = Black1F3241,
+    text = MonieTextColor(
         primary = White,
-        secondary = WhiteF5F6F7,
-        border = Gray9685FF,
-        purple = Purple,
-        darkTransaprent = GrayEBEDEE
+        secondary = GrayAEB4BA
     ),
-    text = MonieColorText(
-        primary = Black,
-        secondary = GrayADB4B9,
-        red = Red,
-        purple = Purple,
-        disabled = PurpleOpacity50
+    interactive = MonieInteractiveColor(
+        primary = Purple,
+        secondary = Black011627,
+        tertiary = White,
+        gradient = Purple71569C to Purple7662F6,
+    ),
+    default = MonieDefaultColor(
+        red = Red
     )
 )

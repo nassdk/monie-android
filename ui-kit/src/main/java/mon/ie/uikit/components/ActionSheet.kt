@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
-import mon.ie.theme.MonieColors
 import mon.ie.theme.MonieDimens
 import mon.ie.uikit.components.buttons.MonieButton
 import mon.ie.uikit.helpers.ActionSheetBundle
@@ -22,6 +21,7 @@ import mon.ie.uikit.helpers.button.MonieButtonShape
 import mon.ie.uikit.helpers.button.MonieButtonStyle
 import mon.ie.uikit.helpers.nodes.ButtonNode
 
+@Suppress("MagicNumber")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ActionSheet(bundle: ActionSheetBundle) {
@@ -52,14 +52,14 @@ fun ActionSheet(bundle: ActionSheetBundle) {
                         modifier = Modifier
                             .padding(horizontal = MonieDimens.dp16)
                             .fillMaxWidth(),
-                        color = MonieColors.background.darkTransaprent
+                        color = Color(0x00EBEDEE)
                     )
                 }
             }
 
             MonieButton(
                 onClick = bundle.onCancel,
-                style = MonieButtonStyle.PRIMARY,
+                style = MonieButtonStyle.NONE,
                 shape = MonieButtonShape.LARGE,
                 modifier = Modifier
                     .padding(all = MonieDimens.dp16)
@@ -95,7 +95,7 @@ private fun ContextualButton(
             button.onClick.invoke()
             onClick.invoke()
         },
-        style = MonieButtonStyle.PRIMARY,
+        style = MonieButtonStyle.NONE,
         shape = getShapeForButton(isLast = lastItem, isFirst = firstItem),
         modifier = Modifier
             .padding(horizontal = MonieDimens.dp16)

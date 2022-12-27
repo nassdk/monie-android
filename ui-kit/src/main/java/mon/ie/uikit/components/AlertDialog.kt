@@ -108,7 +108,7 @@ private fun AlertButton(
 ) {
 
     Divider(
-        color = MonieColors.background.border,
+        color = MonieColors.separator,
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = if (firstItem) MonieDimens.dp16 else 0.dp),

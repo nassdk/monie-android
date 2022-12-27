@@ -7,18 +7,14 @@ import mon.ie.theme.MonieColors
 enum class MonieButtonStyle(val backgroundColor: @Composable () -> Color) {
 
     ACCENT(
-        backgroundColor = { MonieColors.background.purple }
-    ),
-
-    PRIMARY(
-        backgroundColor = { MonieColors.background.primary }
+        backgroundColor = { MonieColors.interactive.primary }
     ),
 
     SECONDARY(
-        backgroundColor = { MonieColors.background.secondary }
+        backgroundColor = { MonieColors.interactive.secondary }
     ),
 
     NONE(
         backgroundColor = { Color.Transparent }
-    ),
+    )
 }
