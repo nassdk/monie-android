@@ -28,12 +28,12 @@ internal fun NavGraphBuilder.AuthGraph(
                 },
                 content = { entry ->
                     val composeComponent by entry.scopedComponent {
-                        component.composeComponent.create()
+                        component.composeComponent().create()
                     }
 
                     PhoneScreen(
                         navController = navController,
-                        viewModel = composeComponent.phoneViewModel
+                        viewModel = composeComponent.phoneViewModel.get()
                     )
                 }
             )
@@ -45,12 +45,12 @@ internal fun NavGraphBuilder.AuthGraph(
                 },
                 content = { entry ->
                     val composeComponent by entry.scopedComponent {
-                        component.composeComponent.create()
+                        component.composeComponent().create()
                     }
 
                     PinScreen(
                         navController = navController,
-                        viewModel = composeComponent.pinViewModel
+                        viewModel = composeComponent.pinViewModel.get()
                     )
                 }
             )

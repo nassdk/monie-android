@@ -7,7 +7,7 @@ import mon.ie.splash.SplashApi
 @FeatureScope
 @Component(modules = [SplashModule::class])
 internal interface SplashComponent {
-    val composeComponent: SplashComposeComponent.Factory
+    fun composeComponent(): SplashComposeComponent.Factory
 
     @Component.Factory
     interface Factory {

@@ -7,7 +7,7 @@ import mon.ie.di.scope.FeatureScope
 @FeatureScope
 @Component(modules = [AuthModule::class])
 internal interface AuthComponent {
-    val composeComponent: AuthComposeComponent.Factory
+    fun composeComponent(): AuthComposeComponent.Factory
 
     @Component.Factory
     interface Factory {

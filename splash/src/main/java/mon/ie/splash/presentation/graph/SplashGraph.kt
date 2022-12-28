@@ -28,12 +28,12 @@ internal fun NavGraphBuilder.SplashGraph(
                 },
                 content = { entry ->
                     val composeComponent by entry.scopedComponent {
-                        component.composeComponent.create()
+                        component.composeComponent().create()
                     }
 
                     SplashScreen(
                         navController = navController,
-                        viewModel = composeComponent.splashViewModel
+                        viewModel = composeComponent.splashViewModel.get()
                     )
                 }
             )
