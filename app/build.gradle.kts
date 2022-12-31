@@ -59,18 +59,20 @@ dependencies {
     implementation(dependencyNotation = bom)
     debugImplementation(dependencyNotation = bom)
 
-    implementation(dependencyNotation = projects.theme)
-    implementation(dependencyNotation = projects.uiKit)
-    implementation(dependencyNotation = projects.common)
-    implementation(dependencyNotation = projects.navigation)
-    implementation(dependencyNotation = projects.di)
-
-    implementation(dependencyNotation = projects.splash)
-    implementation(dependencyNotation = projects.auth)
-
     implementation(dependencyNotation = deps.bundles.compose.basepack)
     implementation(dependencyNotation = deps.compose.activity)
     implementation(dependencyNotation = deps.compose.navigation)
     implementation(dependencyNotation = deps.coreKtx)
     debugImplementation(dependencyNotation = deps.compose.ui.tooling)
+
+    setOf("$rootDir/modules/feature", "$rootDir/modules/core").forEach { dirName ->
+        File(dirName).listFiles()
+            ?.filter { it.isDirectory }
+            ?.forEach { module ->
+                val moduleName = module.name
+                if (File("${module.absolutePath}/build.gradle.kts").exists()) {
+                    implementation(project(":$moduleName"))
+                }
+            }
+    }
 }
