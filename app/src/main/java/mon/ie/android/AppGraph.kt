@@ -11,13 +11,7 @@ internal fun NavHostController.createAppNavGraph(): NavGraph {
     return createGraph(
         startDestination = "starter",
         builder = {
-
-            MediatorManager.splashMediator.feature.ModuleNavGraph(
-                scope = this,
-                navController = this@createAppNavGraph
-            )
-
-            MediatorManager.authMediator.feature.ModuleNavGraph(
+            MediatorManager.AppDestinations(
                 scope = this,
                 navController = this@createAppNavGraph
             )

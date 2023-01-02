@@ -1,11 +1,25 @@
 package mon.ie.android.mediator
 
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import mon.ie.common.base.IEMediator
+
 object MediatorManager {
-    val splashMediator by lazy { SplashMediator() }
-    val authMediator by lazy { AuthMediator() }
+    private val mediators = mutableListOf<IEMediator>()
+
+    val splashMediator = SplashMediator().also(mediators::add)
+    val authMediator = AuthMediator().also(mediators::add)
+
+    @Composable
+    fun AppDestinations(scope: NavGraphBuilder, navController: NavController) {
+        mediators.forEach { mediator ->
+            mediator.NavGraph(scope = scope, navController = navController)
+        }
+    }
 
     fun clearMediators() {
-        splashMediator.clearFeature()
-        authMediator.clearFeature()
+        mediators.forEach(IEMediator::clearFeature)
+        mediators.clear()
     }
 }
