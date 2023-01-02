@@ -9,6 +9,7 @@ kotlinVersion = "1.7.20"
 # Libs
 appCompat = "1.5.1"
 lifecycle = "2.5.1"
+lifecycleRuntimeCompose = "2.6.0-alpha01"
 composeBomVersion = "2022.11.00"
 composeCompilerVersion = "1.3.2"
 composeActivityVersion = "1.5.1"
@@ -72,6 +73,7 @@ appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat"
 
 # Lifecycle
 lifecycle-viewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 
 # Data
 dataStore = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStore" }

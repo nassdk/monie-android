@@ -17,6 +17,7 @@ dependencies {
     implementation(dependencyNotation = projects.navigation)
 
     implementation(dependencyNotation = deps.bundles.compose.basepack)
+    implementation(dependencyNotation = deps.lifecycle.runtimeCompose)
     implementation(dependencyNotation = deps.compose.navigation)
 
     implementation(dependencyNotation = deps.dagger)
