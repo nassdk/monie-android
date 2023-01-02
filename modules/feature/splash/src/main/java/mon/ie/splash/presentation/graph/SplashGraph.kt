@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
 import mon.ie.common.delegates.scopedComponent
+import mon.ie.common.extensions.composableAwareViewModel
 import mon.ie.navigation.lifecycle.ComposableLifecycleStateModel
 import mon.ie.navigation.lifecycleComposable
 import mon.ie.splash.di.SplashComponent
@@ -33,7 +34,12 @@ internal fun NavGraphBuilder.SplashGraph(
 
                     SplashScreen(
                         navController = navController,
-                        viewModel = composeComponent.splashViewModel.get()
+                        viewModel = composableAwareViewModel(
+                            owner = entry,
+                            creator = { _ ->
+                                composeComponent.splashViewModel.get()
+                            }
+                        )
                     )
                 }
             )

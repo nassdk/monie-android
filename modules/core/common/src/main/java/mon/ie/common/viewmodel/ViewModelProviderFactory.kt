@@ -1,7 +1,8 @@
-package mon.ie.di
+package mon.ie.common.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import mon.ie.di.Provider
 
 class ViewModelProviderFactory<VM : ViewModel>(
     private val viewModelProvider: Provider<VM>

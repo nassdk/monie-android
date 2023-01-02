@@ -2,7 +2,7 @@ package mon.ie.common.delegates
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import mon.ie.di.ViewModelProviderFactory
+import mon.ie.common.viewmodel.ViewModelProviderFactory
 
 fun <T> ViewModelStoreOwner.scopedComponent(componentProvider: () -> T): Lazy<T> =
     ScopedComponentDelegate(this, componentProvider)

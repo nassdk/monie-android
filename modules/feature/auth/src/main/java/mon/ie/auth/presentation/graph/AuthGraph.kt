@@ -8,6 +8,7 @@ import mon.ie.auth.di.AuthComponent
 import mon.ie.auth.presentation.screen.phone.PhoneScreen
 import mon.ie.auth.presentation.screen.pin.PinScreen
 import mon.ie.common.delegates.scopedComponent
+import mon.ie.common.extensions.composableAwareViewModel
 import mon.ie.navigation.lifecycle.ComposableLifecycleStateModel
 import mon.ie.navigation.lifecycleComposable
 
@@ -33,7 +34,12 @@ internal fun NavGraphBuilder.AuthGraph(
 
                     PhoneScreen(
                         navController = navController,
-                        viewModel = composeComponent.phoneViewModel.get()
+                        viewModel = composableAwareViewModel(
+                            owner = entry,
+                            creator = { _ ->
+                                composeComponent.phoneViewModel.get()
+                            }
+                        )
                     )
                 }
             )
@@ -50,7 +56,12 @@ internal fun NavGraphBuilder.AuthGraph(
 
                     PinScreen(
                         navController = navController,
-                        viewModel = composeComponent.pinViewModel.get()
+                        viewModel = composableAwareViewModel(
+                            owner = entry,
+                            creator = { _ ->
+                                composeComponent.pinViewModel.get()
+                            }
+                        )
                     )
                 }
             )
