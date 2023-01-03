@@ -1,14 +1,14 @@
 package mon.ie.auth.presentation.screen.phone
 
-import mon.ie.common.base.IEIntent
-import mon.ie.common.base.IEState
-import mon.ie.common.base.IEViewModel
+import mon.ie.common.base.BaseIntent
+import mon.ie.common.base.BaseState
+import mon.ie.common.base.BaseViewModel
 import javax.inject.Inject
 
-class PhoneState : IEState
-class PhoneIntent : IEIntent
+class PhoneState : BaseState
+class PhoneIntent : BaseIntent
 
 internal class PhoneViewModel @Inject constructor() :
-    IEViewModel<PhoneState, PhoneIntent>() {
+    BaseViewModel<PhoneState, PhoneIntent>() {
     override val initialState = PhoneState()
 }

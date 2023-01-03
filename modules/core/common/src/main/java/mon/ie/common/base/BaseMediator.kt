@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 
-abstract class IEMediator {
+abstract class BaseMediator {
 
     @Composable
     fun NavGraph(scope: NavGraphBuilder, navController: NavController) {

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import mon.ie.common.coroutines.CoroutinesDispatcherProvider
 
-abstract class IEViewModel<STATE : IEState, INTENT : IEIntent>(
+abstract class BaseViewModel<STATE : BaseState, INTENT : BaseIntent>(
     protected val dispatcherProvider: CoroutinesDispatcherProvider = CoroutinesDispatcherProvider()
 ) : ViewModel() {
 

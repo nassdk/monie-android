@@ -1,14 +1,14 @@
 package mon.ie.auth.presentation.screen.pin
 
-import mon.ie.common.base.IEIntent
-import mon.ie.common.base.IEState
-import mon.ie.common.base.IEViewModel
+import mon.ie.common.base.BaseIntent
+import mon.ie.common.base.BaseState
+import mon.ie.common.base.BaseViewModel
 import javax.inject.Inject
 
-class PinState : IEState
-class PinIntent : IEIntent
+class PinState : BaseState
+class PinIntent : BaseIntent
 
 internal class PinViewModel @Inject constructor() :
-    IEViewModel<PinState, PinIntent>() {
+    BaseViewModel<PinState, PinIntent>() {
     override val initialState = PinState()
 }

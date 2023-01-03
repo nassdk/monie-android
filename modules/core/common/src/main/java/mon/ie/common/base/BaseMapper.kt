@@ -1,5 +1,5 @@
 package mon.ie.common.base
 
-interface IEMapper<FROM, TO> {
+interface BaseMapper<FROM, TO> {
     fun map(from: FROM): TO
 }
