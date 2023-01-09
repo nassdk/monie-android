@@ -49,15 +49,7 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
             }
 
             if (withCompose) {
-                composeOptions.kotlinCompilerExtensionVersion =
-                    deps.versions.composeCompilerVersion.get()
-
-                with(dependencies) {
-                    val composePlatform = platform(deps.compose.bom)
-                    add("implementation", composePlatform)
-                    add("testImplementation", composePlatform)
-                    add("debugImplementation", deps.compose.ui.tooling)
-                }
+                composeOptions.kotlinCompilerExtensionVersion = deps.versions.composeCompilerVersion.get()
             }
 
             buildFeatures.compose = withCompose
@@ -78,7 +70,7 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     source = fileTree(projectDir)
     config.setFrom(files("${projectDir}/config/detekt/detekt.yml"))
     include("**/*.kt")
-    exclude("**/resources/**", "**/build/**")
+    exclude("**/resources/**", "**/build/**", "**/buildSrc/**")
 
     reports {
         xml.required.set(true)
