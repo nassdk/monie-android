@@ -11,10 +11,13 @@ configureAndroidOptions(true, false)
 dependencies {
     implementation(dependencyNotation = projects.di)
     implementation(dependencyNotation = projects.navigation)
-    implementation(dependencyNotation = deps.coreKtx)
-    implementation(dependencyNotation = deps.appCompat)
-    implementation(dependencyNotation = deps.compose.material)
-    implementation(dependencyNotation = deps.compose.navigation)
-    implementation(dependencyNotation = deps.dagger)
-    implementation(dependencyNotation = deps.lifecycle.viewmodelCompose)
+
+    implementDi()
+    implementComposeBom()
+    implementation(dependencyNotation = Dependencies.Compose.navigation)
+
+    implementation(dependencyNotation = Dependencies.AndroidX.coreKtx)
+    implementation(dependencyNotation = Dependencies.AndroidX.appCompat)
+
+    implementation(dependencyNotation = Dependencies.Lifecycle.viewModelCompose)
 }

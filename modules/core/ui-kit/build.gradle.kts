@@ -11,7 +11,8 @@ configureAndroidOptions(true, false)
 dependencies {
     implementation(dependencyNotation = projects.theme)
 
-    implementation(dependencyNotation = deps.compose.activity)
-    implementation(dependencyNotation = deps.bundles.compose.basepack)
-    implementation(dependencyNotation = deps.bundles.compose.animationpack)
+    implementComposeBase()
+    implementComposeAnimation()
+
+    implementation(dependencyNotation = Dependencies.Compose.activity)
 }

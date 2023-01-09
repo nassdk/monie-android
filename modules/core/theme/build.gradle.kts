@@ -8,6 +8,4 @@ plugins {
 val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by rootProject.extra
 configureAndroidOptions(true, false)
 
-dependencies {
-    implementation(dependencyNotation = deps.bundles.compose.basepack)
-}
+DependencyHandlerScope.of(dependencies).implementComposeBase()

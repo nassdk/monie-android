@@ -8,7 +8,4 @@ plugins {
 val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by rootProject.extra
 configureAndroidOptions(false, false)
 
-dependencies {
-    implementation(dependencyNotation = deps.dagger)
-    implementation(dependencyNotation = deps.compose.navigation)
-}
+DependencyHandlerScope.of(dependencies).implementDi()

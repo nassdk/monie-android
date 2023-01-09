@@ -16,9 +16,9 @@ dependencies {
     implementation(dependencyNotation = projects.uiKit)
     implementation(dependencyNotation = projects.navigation)
 
-    implementation(dependencyNotation = deps.bundles.compose.basepack)
-    implementation(dependencyNotation = deps.lifecycle.runtimeCompose)
-    implementation(dependencyNotation = deps.compose.navigation)
-    implementation(dependencyNotation = deps.dagger)
-    kapt(dependencyNotation = deps.dagger.compiler)
+    implementComposeBase()
+    implementDiWithCompiler()
+
+    implementation(dependencyNotation = Dependencies.Compose.navigation)
+    implementation(dependencyNotation = Dependencies.Lifecycle.runtimeCompose)
 }
