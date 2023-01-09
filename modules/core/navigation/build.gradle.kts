@@ -9,6 +9,6 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
 configureAndroidOptions(true, false)
 
 dependencies {
-    implementation(dependencyNotation = deps.compose.navigation)
-    implementation(dependencyNotation = deps.bundles.compose.basepack)
+    implementComposeBase()
+    implementation(dependencyNotation = Dependencies.Compose.navigation)
 }

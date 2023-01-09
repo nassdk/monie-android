@@ -55,15 +55,10 @@ android {
 }
 
 dependencies {
-    val bom = platform(deps.compose.bom)
-    implementation(dependencyNotation = bom)
-    debugImplementation(dependencyNotation = bom)
-
-    implementation(dependencyNotation = deps.bundles.compose.basepack)
-    implementation(dependencyNotation = deps.compose.activity)
-    implementation(dependencyNotation = deps.compose.navigation)
-    implementation(dependencyNotation = deps.coreKtx)
-    debugImplementation(dependencyNotation = deps.compose.ui.tooling)
+    implementComposeBase()
+    implementation(dependencyNotation = Dependencies.Compose.navigation)
+    implementation(dependencyNotation = Dependencies.Compose.activity)
+    implementation(dependencyNotation = Dependencies.AndroidX.coreKtx)
 
     setOf("$rootDir/modules/feature", "$rootDir/modules/core").forEach { dirName ->
         File(dirName).listFiles()
