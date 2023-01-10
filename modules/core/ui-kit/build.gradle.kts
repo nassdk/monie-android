@@ -1,7 +1,4 @@
-android {
-    buildFeatures.compose = true
-    composeOptions.kotlinCompilerExtensionVersion = Version.composeCompiler
-}
+android.implementCompose()
 
 dependencies {
     implementation(dependencyNotation = projects.theme)
