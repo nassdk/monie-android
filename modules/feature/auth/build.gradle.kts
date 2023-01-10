@@ -2,10 +2,7 @@ plugins {
     id(Plugins.Project.kapt)
 }
 
-android {
-    buildFeatures.compose = true
-    composeOptions.kotlinCompilerExtensionVersion = Version.composeCompiler
-}
+android.implementCompose()
 
 dependencies {
     implementation(dependencyNotation = projects.di)
