@@ -1,62 +1,29 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
+buildscript {
+    dependencies {
+        classpath(Plugins.Classpath.androidGradle)
+        classpath(Plugins.Classpath.kotlinGradle)
+    }
 
-plugins {
-    alias(deps.plugins.android.library) apply false
-    alias(deps.plugins.android.application) apply false
-    alias(deps.plugins.kotlin.android) apply false
-    alias(deps.plugins.kotlin.kapt) apply false
-    alias(deps.plugins.kotlin.serialization) apply false
-    alias(deps.plugins.detekt)
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+    }
 }
 
-val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by extra(
-    fun Project.(withCompose: Boolean, withBuild: Boolean) {
+plugins {
+    id(Plugins.Project.detekt) version Version.detekt
+}
 
-        extensions.configure<com.android.build.gradle.BaseExtension> {
-            defaultConfig {
-                compileSdkVersion(config.versions.compileSdk.get().toInt())
-                minSdk = config.versions.minSdk.get().toInt()
-                targetSdk = config.versions.targetSdk.get().toInt()
-                versionCode = config.versions.versionCode.get().toInt()
-                versionName = config.versions.versionName.get()
+repositories {
+    mavenCentral()
+}
 
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-                vectorDrawables {
-                    useSupportLibrary = true
-                }
-            }
+apply(plugin = Plugins.Project.moduleConfigurator)
 
-            buildTypes {
-                getByName("release") {
-                    isMinifyEnabled = false
-                    proguardFiles(
-                        getDefaultProguardFile("proguard-android-optimize.txt"),
-                        "proguard-rules.pro"
-                    )
-                }
-            }
-            compileOptions {
-                sourceCompatibility = JavaVersion.VERSION_1_8
-                targetCompatibility = JavaVersion.VERSION_1_8
-            }
-
-            packagingOptions {
-                resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-            }
-
-            tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-                kotlinOptions.jvmTarget = "1.8"
-            }
-
-            if (withCompose) {
-                composeOptions.kotlinCompilerExtensionVersion = deps.versions.composeCompilerVersion.get()
-            }
-
-            buildFeatures.compose = withCompose
-            buildFeatures.buildConfig = withBuild
-        }
-    }
-)
+subprojects {
+    apply(plugin = Plugins.Project.moduleConfigurator)
+}
 
 detekt {
     config = files("${projectDir}/config/detekt/detekt.yml")

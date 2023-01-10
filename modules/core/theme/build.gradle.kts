@@ -1,11 +1,6 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
-
-plugins {
-    alias(deps.plugins.android.library)
-    alias(deps.plugins.kotlin.android)
+android {
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = Version.composeCompiler
 }
-
-val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) -> Unit by rootProject.extra
-configureAndroidOptions(true, false)
 
 DependencyHandlerScope.of(dependencies).implementComposeBase()

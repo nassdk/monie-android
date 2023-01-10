@@ -1,33 +1,29 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
-
 plugins {
-    alias(deps.plugins.android.application)
-    alias(deps.plugins.kotlin.android)
+    id(Plugins.Project.application)
+    id(Plugins.Project.kotlinAndroid)
 }
 
 android {
-    namespace = config.versions.appId.get()
-    compileSdk = config.versions.compileSdk.get().toInt()
+    namespace = MonieConfig.appId
+    compileSdk = MonieConfig.compileSdk
 
     defaultConfig {
-        applicationId = config.versions.appId.get()
-        minSdk = config.versions.minSdk.get().toInt()
-        targetSdk = config.versions.targetSdk.get().toInt()
-        versionCode = config.versions.versionCode.get().toInt()
-        versionName = config.versions.versionName.get()
+        applicationId = MonieConfig.appId
+        minSdk = MonieConfig.minSdk
+        targetSdk = MonieConfig.targetSdk
+        versionCode = MonieConfig.versionCode
+        versionName = MonieConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        testInstrumentationRunner = MonieConfig.runner
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(MonieConfig.androidDefaultProguardFileName),
+                MonieConfig.proguardFileName
             )
         }
     }
@@ -39,19 +35,12 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = listOf("-Xcontext-receivers")
     }
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = deps.versions.composeCompilerVersion.get()
-    }
-
-    packagingOptions {
-        resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-    }
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = Version.composeCompiler
+    packagingOptions.resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
 }
 
 dependencies {

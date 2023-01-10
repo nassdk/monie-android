@@ -11,15 +11,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-
-    versionCatalogs {
-        create("deps") {
-            from(files("../monie-android/gradle/deps.versions.toml"))
-        }
-        create("config") {
-            from(files("../monie-android/gradle/config.versions.toml"))
-        }
-    }
 }
 rootProject.name = "monie"
 include("app")

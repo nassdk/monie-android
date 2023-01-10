@@ -9,6 +9,7 @@
 # built application files
 *.apk
 *.ap_
+*.db
 mfm-push/build/
 palette/build/
 
