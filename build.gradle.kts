@@ -46,6 +46,7 @@ val configureAndroidOptions: Project.(withCompose: Boolean, withBuild: Boolean) 
 
             tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
                 kotlinOptions.jvmTarget = "1.8"
+                kotlinOptions.freeCompilerArgs = listOf("-Xcontext-receivers")
             }
 
             if (withCompose) {

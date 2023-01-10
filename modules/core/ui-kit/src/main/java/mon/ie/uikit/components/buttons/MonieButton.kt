@@ -109,8 +109,7 @@ internal fun RowScope.MakeTitle(
             .padding(
                 start = if (hasStartIcon) MonieDimens.dp12 else 0.dp,
                 end = if (hasEndIcon) MonieDimens.dp12 else 0.dp,
-            )
-            .then(calculateModifier(config = config, isSmall = isSmall))
+            ).calculateModifier(config = config, isSmall = isSmall)
     )
 }
 
@@ -129,7 +128,8 @@ internal fun LoadingProgress(size: Dp) {
     )
 }
 
-private fun RowScope.calculateModifier(
+context(RowScope)
+private fun Modifier.calculateModifier(
     isSmall: Boolean,
     config: MonieButtonConfig
 ): Modifier {
@@ -145,20 +145,15 @@ private fun RowScope.calculateModifier(
             )
         }
 
-        !hasStartIcon && !hasEndIcon && isSmall -> Modifier
+        !hasStartIcon && !hasEndIcon && isSmall -> this
 
         // Text should be centered if there are not icons in btn
-        !hasStartIcon && !hasEndIcon -> Modifier
-            .fillMaxWidth()
-            .weight(weight = 1f, fill = true)
+        !hasStartIcon && !hasEndIcon -> then(fillMaxWidth().weight(weight = 1f, fill = true))
 
-        // Text should be centered if there are icons on botn sides
-        hasStartIcon && hasEndIcon -> Modifier.weight(
-            weight = 1f,
-            fill = true
-        )
+        // Text should be centered if there are icons on both sides
+        hasStartIcon && hasEndIcon -> then(weight(weight = 1f, fill = true))
 
         // Text won't be centered if there is icon on one side
-        else -> Modifier
+        else -> this
     }
 }
