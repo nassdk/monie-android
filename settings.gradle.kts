@@ -5,6 +5,7 @@ pluginManagement {
         mavenCentral()
     }
 }
+
 dependencyResolutionManagement {
     enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
     repositories {

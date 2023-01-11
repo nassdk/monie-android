@@ -1,3 +1,5 @@
+package config
+
 object Version {
     const val composeBom = "2022.11.00"
     const val composeActivity = "1.5.1"
@@ -9,6 +11,8 @@ object Version {
     const val appCompat = "1.5.1"
     const val lifecycle = "2.6.0-alpha01"
     const val coil = "2.2.1"
+    const val gradle = "7.3.1"
+    const val kotlin = "1.7.20"
     const val coroutines = "1.6.4"
     const val grpcJava = "1.51.0"
     const val grpcKotlinStub = "1.2.1"

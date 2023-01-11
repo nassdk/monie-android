@@ -4,9 +4,9 @@ plugins {
 
 gradlePlugin {
     plugins {
-        register("module-configurator") {
-            id = "module.configurator"
-            implementationClass = "MonieConfiguratorPlugin"
+        register("monie-configurator") {
+            id = "mon.ie.configurator"
+            implementationClass = "configuration.MonieConfiguratorPlugin"
         }
     }
 }

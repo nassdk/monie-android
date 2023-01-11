@@ -1,7 +1,7 @@
 buildscript {
     dependencies {
-        classpath(Plugins.Classpath.androidGradle)
-        classpath(Plugins.Classpath.kotlinGradle)
+        classpath(config.Plugins.Classpath.androidGradle)
+        classpath(config.Plugins.Classpath.kotlinGradle)
     }
 
     repositories {
@@ -11,8 +11,8 @@ buildscript {
     }
 }
 
-apply(plugin = Plugins.Project.moduleConfigurator)
+apply(plugin = config.Plugins.Project.moduleConfigurator)
 
 subprojects {
-    apply(plugin = Plugins.Project.moduleConfigurator)
+    apply(plugin = config.Plugins.Project.moduleConfigurator)
 }

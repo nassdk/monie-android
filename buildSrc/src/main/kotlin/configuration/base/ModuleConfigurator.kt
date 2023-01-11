@@ -1,3 +1,5 @@
+package configuration.base
+
 import org.gradle.api.Project
 
 internal interface ModuleConfigurator {

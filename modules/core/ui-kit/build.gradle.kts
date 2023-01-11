@@ -1,3 +1,8 @@
+import config.Dependencies
+import configuration.base.implementCompose
+import configuration.base.implementComposeAnimation
+import configuration.base.implementComposeBase
+
 android.implementCompose()
 
 dependencies {

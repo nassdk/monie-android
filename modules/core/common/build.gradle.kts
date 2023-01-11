@@ -1,3 +1,8 @@
+import config.Dependencies
+import configuration.base.implementCompose
+import configuration.base.implementComposeBom
+import configuration.base.implementDi
+
 android.implementCompose()
 
 dependencies {

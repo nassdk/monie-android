@@ -1,10 +1,16 @@
+package configuration.ordinal
+
 import com.android.build.gradle.BaseExtension
+import config.MonieConfig
+import configuration.base.ModuleConfigurator
+import configuration.base.release
+import configuration.base.setupAndroidBaseExtensions
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class AndroidModuleSettingsConfigurator : ModuleConfigurator {
+internal class AndroidModuleSettingsConfigurator : ModuleConfigurator {
 
     override fun configure(project: Project) {
         project.setupAndroidBaseExtensions {
@@ -22,8 +28,6 @@ class AndroidModuleSettingsConfigurator : ModuleConfigurator {
 
             minSdk = MonieConfig.minSdk
             targetSdk = MonieConfig.targetSdk
-            versionCode = MonieConfig.versionCode
-            versionName = MonieConfig.versionName
 
             testInstrumentationRunner = MonieConfig.runner
             vectorDrawables.useSupportLibrary = true

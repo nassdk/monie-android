@@ -1,6 +1,10 @@
+package configuration.application
+
+import config.Plugins
+import configuration.base.ModuleConfigurator
 import org.gradle.api.Project
 
-class ApplicationPluginConfigurator : ModuleConfigurator {
+internal class ApplicationPluginConfigurator : ModuleConfigurator {
 
     override fun configure(project: Project) {
         with(project.plugins) {
