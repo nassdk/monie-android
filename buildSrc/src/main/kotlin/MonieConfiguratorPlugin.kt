@@ -1,5 +1,6 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.logging.LogLevel
 
 class MonieConfiguratorPlugin : Plugin<Project> {
 
@@ -8,8 +9,8 @@ class MonieConfiguratorPlugin : Plugin<Project> {
     }
 
     override fun apply(target: Project) = with(target) {
+        project.logger.log(LogLevel.DEBUG, "Configuring module ${target.name}")
         if (name in ignoredModulesNames) return
-
         configureModule()
     }
 
@@ -22,10 +23,9 @@ class MonieConfiguratorPlugin : Plugin<Project> {
     private companion object {
         private const val ROOT_PROJECT_NAME = "monie"
         private const val APP_PROJECT_NAME = "app"
-        private const val BUILDSRC_PROJECT_NAME = "buildSrc"
 
         private val ignoredModulesNames = arrayOf(
-            ROOT_PROJECT_NAME, APP_PROJECT_NAME, BUILDSRC_PROJECT_NAME
+            ROOT_PROJECT_NAME, APP_PROJECT_NAME
         )
     }
 }
