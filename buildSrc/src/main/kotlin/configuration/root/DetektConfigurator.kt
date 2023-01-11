@@ -1,3 +1,7 @@
+package configuration.root
+
+import configuration.base.ModuleConfigurator
+import configuration.base.detekt
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
@@ -5,7 +9,7 @@ import org.gradle.api.tasks.Exec
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
 
-class DetektConfigurator : ModuleConfigurator {
+internal class DetektConfigurator : ModuleConfigurator {
 
     override fun configure(project: Project) {
         with(project) {

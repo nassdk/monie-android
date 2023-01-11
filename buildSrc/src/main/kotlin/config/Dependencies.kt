@@ -1,3 +1,5 @@
+package config
+
 object Dependencies {
     object Compose {
         const val activity = "androidx.activity:activity-compose:${Version.composeActivity}"

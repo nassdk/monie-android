@@ -1,10 +1,17 @@
+package configuration.application
+
 import com.android.build.gradle.BaseExtension
+import config.MonieConfig
+import config.Version
+import configuration.base.ModuleConfigurator
+import configuration.base.release
+import configuration.base.setupAndroidBaseExtensions
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class ApplicationConfigurator : ModuleConfigurator {
+internal class ApplicationConfigurator : ModuleConfigurator {
 
     override fun configure(project: Project) {
         project.setupAndroidBaseExtensions {

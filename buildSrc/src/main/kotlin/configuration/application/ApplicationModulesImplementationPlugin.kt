@@ -1,7 +1,11 @@
+package configuration.application
+
+import configuration.base.ModuleConfigurator
+import configuration.base.implementModule
 import org.gradle.api.Project
 import java.io.File
 
-class ApplicationModulesImplementationPlugin : ModuleConfigurator {
+internal class ApplicationModulesImplementationPlugin : ModuleConfigurator {
 
     override fun configure(project: Project) {
         val rootDir = project.rootDir

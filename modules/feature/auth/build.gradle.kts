@@ -1,5 +1,10 @@
+import config.Dependencies
+import configuration.base.implementCompose
+import configuration.base.implementComposeBase
+import configuration.base.implementDiWithCompiler
+
 plugins {
-    id(Plugins.Project.kapt)
+    id(config.Plugins.Project.kapt)
 }
 
 android.implementCompose()
