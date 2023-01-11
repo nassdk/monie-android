@@ -1,11 +1,20 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.logging.LogLevel
+import org.gradle.kotlin.dsl.provideDelegate
 
 class MonieConfiguratorPlugin : Plugin<Project> {
 
     private val rootConfigurators by lazy(LazyThreadSafetyMode.NONE) {
         arrayOf(RootPluginsConfigurator(), DetektConfigurator())
+    }
+
+    private val applicationConfigurators by lazy(LazyThreadSafetyMode.NONE) {
+        arrayOf(
+            ApplicationPluginConfigurator(),
+            ApplicationConfigurator(),
+            ApplicationModulesImplementationPlugin()
+        )
     }
 
     private val moduleConfigurators by lazy(LazyThreadSafetyMode.NONE) {
@@ -16,8 +25,8 @@ class MonieConfiguratorPlugin : Plugin<Project> {
         project.logger.log(LogLevel.DEBUG, "Configuring module ${target.name}")
 
         when {
-            name in ignoredModulesNames -> return@with
             name == ROOT_PROJECT_NAME -> configureRootProject()
+            name == APP_PROJECT_NAME -> configureApplication()
             else -> configureModule()
         }
     }
@@ -25,6 +34,12 @@ class MonieConfiguratorPlugin : Plugin<Project> {
     private fun Project.configureRootProject() {
         rootConfigurators.forEach { configurator ->
             configurator.configure(project = this)
+        }
+    }
+
+    private fun Project.configureApplication() {
+        applicationConfigurators.forEach { configurator ->
+            configurator.configure(project = project)
         }
     }
 
@@ -37,7 +52,5 @@ class MonieConfiguratorPlugin : Plugin<Project> {
     private companion object {
         private const val ROOT_PROJECT_NAME = "monie"
         private const val APP_PROJECT_NAME = "app"
-
-        private val ignoredModulesNames = arrayOf(APP_PROJECT_NAME)
     }
 }
