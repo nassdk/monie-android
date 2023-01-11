@@ -1,3 +1,4 @@
+import org.gradle.api.Project
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 internal fun DependencyHandlerScope.implementation(dependencyNotation: Any) {
@@ -10,6 +11,15 @@ internal fun DependencyHandlerScope.debugImplementation(dependencyNotation: Any)
 
 internal fun DependencyHandlerScope.kapt(dependencyNotation: Any) {
     add(configurationName = "kapt", dependencyNotation = dependencyNotation)
+}
+
+internal fun Project.implementModule(moduleName: String) {
+    dependencies.add(
+        "implementation",
+        dependencies.project(
+            mapOf("path" to ":$moduleName")
+        )
+    )
 }
 
 fun DependencyHandlerScope.implementDiWithCompiler() {
