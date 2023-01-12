@@ -13,5 +13,6 @@ object Plugins {
         const val application = "com.android.application"
         const val kotlinAndroid = "org.jetbrains.kotlin.android"
         const val moduleConfigurator = "mon.ie.configurator"
+        const val depsVersions = "com.github.ben-manes.versions"
     }
 }

@@ -1,3 +1,7 @@
+plugins {
+    id(config.Plugins.Project.depsVersions) version config.Version.depsVersions
+}
+
 buildscript {
     dependencies {
         classpath(config.Plugins.Classpath.androidGradle)

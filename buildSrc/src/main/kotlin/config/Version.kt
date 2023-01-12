@@ -13,6 +13,7 @@ object Version {
     const val coil = "2.2.1"
     const val gradle = "7.3.1"
     const val kotlin = "1.7.20"
+    const val depsVersions = "0.44.0"
     const val coroutines = "1.6.4"
     const val grpcJava = "1.51.0"
     const val grpcKotlinStub = "1.2.1"
